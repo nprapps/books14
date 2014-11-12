@@ -98,6 +98,12 @@ COPY_GOOGLE_DOC_URL = 'https://docs.google.com/spreadsheet/ccc?key=0AlXMOHKxzQVR
 COPY_PATH = 'data/copy.xlsx'
 
 """
+DATA
+"""
+
+DATA_GOOGLE_DOC_KEY = '0AlPD88PpyGPUdExyUWV1Z2ZleVl6cGpJa0tOQkMzZnc'
+
+"""
 SHARING
 """
 SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET['bucket_name'], PROJECT_SLUG)
