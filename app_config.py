@@ -94,7 +94,7 @@ DEBUG = True
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_URL = 'https://docs.google.com/spreadsheet/ccc?key=0Ak3IIavLYTovdDRLNEVhbm94M2RrTF9lVFlkVUI4WUE#gid=1'
+COPY_GOOGLE_DOC_URL = 'https://docs.google.com/spreadsheet/ccc?key=0Ak3IIavLYTovdE9hWkUwRFVlSGxmMkdhWXhrNW9LekE&usp=drive_web#gid=0'
 COPY_PATH = 'data/copy.xlsx'
 
 """
@@ -139,7 +139,10 @@ def get_secrets():
     A method for accessing our secrets.
     """
     secrets = [
-        'EXAMPLE_SECRET'
+        'BAKER_TAYLOR_API_USERID',
+        'BAKER_TAYLOR_API_PASSWORD',
+        'BAKER_TAYLOR_USERID',
+        'BAKER_TAYLOR_PASSWORD',
     ]
 
     secrets_dict = {}

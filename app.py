@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
-import json
-
-import argparse
-from flask import Flask, make_response, render_template
-
 import app_config
-from render_utils import make_context, smarty_filter, urlencode_filter
+import argparse
+import json
+import re
 import static
+
+from PIL import Image
+from flask import Flask, make_response, render_template
+from render_utils import make_context, smarty_filter, urlencode_filter
 
 app = Flask(__name__)
 

@@ -194,6 +194,28 @@ def deploy(remote='origin'):
     _deploy_assets()
 
 """
+App-Specific Commands
+"""
+def load_images():
+    """
+    Scrapes images from Baker & Taylor API.
+    Does not save book data.
+    Requires existing books.json to work.
+    """
+    with settings(warn_only=True):
+        local('mkdir -p www/img/cover')
+    data.load_images()
+
+
+def load_books():
+    """
+    Loads/reloads just the book data.
+    Does not save image files.
+    """
+    data.get_books_csv()
+    data.parse_books_csv()
+
+"""
 Destruction
 
 Changes to destruction require setup/deploy to a test host in order to test.
