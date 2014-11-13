@@ -438,23 +438,23 @@ h1 + #story-meta { margin-top: -11px; }
 	}
 }
 
-///tagcolor/////////////////////////////////////////
-
+.tag, .tags-wrapper .clear-tags{
+	color: @tag-8;
+	font-weight:normal;
+	font-weight:12px;
+}
 
 .tag {
-	border: none;
-	background-color: @tag-8;
-	color: @white;
-	font-weight: normal;
-	font-size: 12px;
-	
+	box-sizing:border-box;
+	border: solid 1px @tag-8;
+	background-color: lighten(@tag-8, 50%);
+
 	&:hover {
+		border: solid 1px @tag-8;
+		background-color: lighten(@tag-8, 50%);
 		color: @tag-8;
-		background-color: lighten(@tag-8, 45%);
 		@media screen and (min-width: @screen-sm){
-			color: #fff;
-			background-color: @tag-8;
-			text-decoration:underline;
+		text-decoration:underline;
 
 		}
 	}
@@ -509,7 +509,6 @@ h1 + #story-meta { margin-top: -11px; }
 
 	@media screen and (min-width: @screen-sm){
 		.tags-wrapper & {
-			
 			padding: 5px 25px 5px 15px;
 			margin: 0;
 			white-space: normal;
@@ -518,16 +517,7 @@ h1 + #story-meta { margin-top: -11px; }
 			-webkit-font-smoothing: subpixel-antialiased;
 			display: block;
 			width: 100%;
-			border-width: 0 0 3px !important;
-			border-style: solid !important;
-			border-color: #fff !important;
-			// background: @tag-8;
-			// color: @white;
-		
-
-			// &:hover {
-			// 	text-decoration: underline;
-			// }
+			margin-bottom: 3px !important;
 
 			&.selected {
 				// background: @tag-8;
@@ -560,10 +550,8 @@ h1 + #story-meta { margin-top: -11px; }
     border: none;
     width: 100%;
     background-color: transparent;
-    color: @red;
     margin: 0;
     padding: 5px 5px 5px 15px;
-    font-size: 16px;
     text-align: left;
     position: relative;
     .transition(all 0.4s ease-in-out);
@@ -927,8 +915,8 @@ footer {
 			.tag.btn {
 				display: block;
 				width: 100%;
-				margin: 0;
-				border-bottom: 1px solid #fff;
+				// margin: 0;
+				// border-bottom: 1px solid #fff;
 				white-space: normal;
 				text-align: left;
 				font-size: 16px;
