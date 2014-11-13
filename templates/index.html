@@ -58,7 +58,7 @@
                     {% for row in COPY.tags %}
                        <li>
                            <button
-                           class="btn btn-large btn-info tag"
+                           class="btn btn-large btn-info tag {{ row.key }}"
                            data-filter-value=".tag-{{ row.key }}" data-tag-slug="{{ row.key }}">{{ row.value }}</button>
                        </li>
                     {% endfor %}

@@ -437,42 +437,28 @@ h1 + #story-meta { margin-top: -11px; }
 		}
 	}
 }
-
-.tag, .tags-wrapper .clear-tags{
-	color: @tag-8;
-	font-weight:normal;
-	font-weight:12px;
-}
-
-.tag {
-	box-sizing:border-box;
-	border: solid 1px @tag-8;
-	background-color: lighten(@tag-8, 50%);
-
+////////////////////////////////button colors
+.btn-color(@color, @perc){
+	color: @color;
+	border: solid 1px @color;
+	background-color: lighten(@color, @perc);
 	&:hover {
-		border-color: @white;
-		// border: solid 1px @tag-8;
-		background-color: lighten(@tag-8, 50%);
-		color: @tag-8;
-		@media screen and (min-width: @screen-sm){
-		// text-decoration:underline;
-
-		}
+		border-color: @color;
+		background-color: lighten(@color, @perc);
+		color: @color;
 	}
-
 	&:active,
 	&:focus {
 		box-shadow: none;
 		border-radius: none;
 		outline: none;
-		color: @tag-8;
-		background-color: lighten(@tag-8, 45%);
+		color: @color;
+		background-color: lighten(@color, @perc);
 	}
-
 	&.selected,
 	&.selected:active,
 	&.selected:focus {
-		background: @tag-8;
+		background: @color;
 		color: @white;
 		position: relative;
 		padding: 8px 25px 8px 15px;
@@ -484,7 +470,7 @@ h1 + #story-meta { margin-top: -11px; }
 			position: absolute;
 			right: 8px;
 			top: 5px;
-			color: lighten(@tag-8, 30%);
+			color: lighten(@color, @perc);
 		}
 
 		.tags-wrapper & {
@@ -495,6 +481,62 @@ h1 + #story-meta { margin-top: -11px; }
 			color: white;
 		}
 	}
+}
+
+
+
+.npr-staff-picks{
+	.btn-color(@tag-8, 50%);
+}
+
+.biography-and-memoir,
+.book-club-ideas,
+.comics-and-graphic-novels,
+.cookbooks-and-food,
+.eye-opening-reads,
+.family-matters,
+.for-art-lovers,
+.for-history-lovers,
+.funny-stuff,
+.historical-fiction,
+.its-all-geek-to-me,
+.lets-talk-about-sex,
+.love-stories,
+.mysteries-and-thrillers,
+.realistic-fiction,
+.science-and-society,
+.science-fiction-and-fantasy,
+.seriously-great-writing,
+.tales-from-around-the-world,
+.the-dark-side{
+	.btn-color(@tag-3, 40%);
+
+}
+
+.kids-books,
+.young-adult{
+	.btn-color(@tag-10, 40%);
+
+}
+
+.poetry,
+.rather-long,
+.rather-short{
+	.btn-color(@tag-5, 50%);
+
+}
+
+
+
+
+// .tag, .tags-wrapper .clear-tags{
+// 	color: @tag-8;
+// 	font-weight:normal;
+// 	font-weight:12px;
+// }
+
+.tag {
+	// box-sizing:border-box;
 
 	.book & {
 		&.selected,
