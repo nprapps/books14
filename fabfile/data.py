@@ -253,11 +253,10 @@ class Book(object):
                     if item != u"":
 
                         # Clean.
-                        item = item.strip()
-                        item.replace(' and ', ' & ')
+                        item = item.strip().replace(' and ', ' & ')
 
                         # Look up from our map.
-                        tag_slug = TAGS_TO_SLUGS.get(item, None)
+                        tag_slug = TAGS_TO_SLUGS.get(item.lower(), None)
 
                         # Append if the tag exists.
                         if tag_slug:
@@ -318,7 +317,7 @@ def get_tags():
         tag = tag.replace(u'’', "'").strip()
 
         SLUGS_TO_TAGS[slug] = tag
-        TAGS_TO_SLUGS[tag] = slug
+        TAGS_TO_SLUGS[tag.lower()] = slug
 
 def parse_books_csv():
     """
@@ -335,7 +334,6 @@ def parse_books_csv():
 
     book_list = []
 
-    # Loop.
     for book in books:
 
         # Skip books with no title or ISBN
