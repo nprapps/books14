@@ -254,6 +254,7 @@ class Book(object):
 
                         # Clean.
                         item = item.strip()
+                        item.replace(' and ', ' & ')
 
                         # Look up from our map.
                         tag_slug = TAGS_TO_SLUGS.get(item, None)
