@@ -6,7 +6,7 @@
 <div class="modal-body-wrapper">
     <a class="paddle" href="#/book/<%= previous %>" id="previous-book">
         <% if (previous != null){  %>
-        &laquo;
+        <span class="icon icon-angle-left"></span>
         <% } %>
     </a>
     <div class="modal-body">
@@ -65,7 +65,7 @@
     </div>
     <a class="paddle" href="#/book/<%= next %>" id="next-book">
         <% if (next != null){  %>
-        &raquo;
+        <span class="icon icon-angle-right"></span>
         <% } %>
     </a>
 </div>
