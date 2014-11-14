@@ -1,11 +1,15 @@
-<div class="modal-header">
+<div class="modal-header hide">
     <!-- <a class="hide npr-logo" href="http://npr.org/books/"><img src="http://media.npr.org/chrome/books/npr-books-logo-color.png" alt="NPR Books" /></a> -->
     <a href="#" class="hide mobile-dismiss" data-dismiss="modal" aria-hidden="true"><i class="icon-chevron-left"></i> Back to NPR&rsquo;s Book Concierge</a>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 </div>
-
-<div class="modal-body">
-    <div class="clearfix">
+<div class="modal-body-wrapper">
+    <a class="paddle" href="#/book/<%= previous %>" id="previous-book">
+        <% if (previous != null){  %>
+        &laquo;
+        <% } %>
+    </a>
+    <div class="modal-body">
         <div class="modal-book-cover">
             <img id="book-image" src="assets/cover/<%= book.slug %><% if (SMALL_MOBILE) { %>-thumb<% } %>.jpg" alt="<%= book.title %>"/>
         </div>
@@ -57,18 +61,21 @@
                 </li>
                 <% } %>
             </ul>
-
         </div>
     </div>
+    <a class="paddle" href="#/book/<%= next %>" id="next-book">
+        <% if (next != null){  %>
+        &raquo;
+        <% } %>
+    </a>
 </div>
 
-<div class="modal-footer">
+<div class="modal-footer hide">
 
-    <% if (previous != null){  %>
+    <% if (previous != null){ %>
     <a href="#/book/<%= previous %>" class="btn btn-default modal-nav-buttons" id="previous-book">PREVIOUS BOOK</a>
     <% } %>
-
-    <% if (next != null){  %>
+    <% if (next != null){ %>
     <a href="#/book/<%= next %>" class="btn btn-default modal-nav-buttons" id="next-book">NEXT BOOK</a>
     <% } %>
     <button type="button" class="btn btn-default" id="modal-close-btn" data-dismiss="modal">Close</button>
