@@ -57,9 +57,7 @@ var back_to_top = function() {
  * Enable or reapply isotope to the grid.
  */
 var isotope_grid = function(filter) {
-    //console.log("grid called");
     $books_grid.isotope({
-        //itemSelector: '.card',
         filter: filter,
         transformsEnabled: !MOBILE,
         getSortData: {
@@ -373,7 +371,6 @@ var on_book_modal_closed = function() {
 
 // Never relayout the grid more than twice a second
 var relayout = _.throttle(function() {
-    console.log("re-layout called");
     $books_grid.isotope('layout');
 }, 500);
 
@@ -383,6 +380,7 @@ var relayout = _.throttle(function() {
  */
 var unveil_grid = function() {
     $books_grid.find('img').unveil(800, function() {
+        $(this).parents('.isotope-item').removeClass('isotope-hidden');
         $(this).imagesLoaded(function() {
             relayout();
         });
