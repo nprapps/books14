@@ -265,6 +265,10 @@ h1 + #story-meta { margin-top: -11px; }
 	width: 16.66666666666667%;
 	padding-bottom: 10px;
 
+  a {
+    display: block;
+  }
+
     @media screen and (max-width: 1400px){
 	    width: 20%;
     }
@@ -1193,14 +1197,9 @@ footer {
 }
 
 .isotope-hidden.isotope-item {
+  display: none;
   pointer-events: none;
   z-index: 1;
-}
-
-// CEG: display none, not just z-index
-// so that unveil doesn't trigger
-.isotope-hidden {
-    display: none;
 }
 
 /**** Isotope CSS3 transitions ****/
