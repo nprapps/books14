@@ -1,3 +1,16 @@
+// add/remove classes to hide/revealing items
+var itemReveal = Isotope.Item.prototype.reveal;
+Isotope.Item.prototype.reveal = function() {
+  itemReveal.apply( this, arguments );
+  $( this.element ).removeClass('isotope-hidden');
+};
+
+var itemHide = Isotope.Item.prototype.hide;
+Isotope.Item.prototype.hide = function() {
+  itemHide.apply( this, arguments );
+  $( this.element ).addClass('isotope-hidden');
+};
+
 var MOBILE = Modernizr.touch;
 var SMALL = Modernizr.mq('only all and (max-width: 480px)');
 
@@ -48,8 +61,8 @@ var isotope_grid = function(filter) {
         filter: filter,
         transformsEnabled: !MOBILE,
         getSortData: {
-            'id': function($el) {
-                return parseInt($el.data('sort'), 10);
+            'id': function(el) {
+                return parseInt($(el).data('sort'), 10);
             }
         },
         sortBy: 'id'
@@ -358,7 +371,7 @@ var on_book_modal_closed = function() {
 
 // Never relayout the grid more than twice a second
 var relayout = _.throttle(function() {
-    $books_grid.isotope('reLayout');
+    $books_grid.isotope('layout');
 }, 500);
 
 
@@ -367,7 +380,8 @@ var relayout = _.throttle(function() {
  */
 var unveil_grid = function() {
     $books_grid.find('img').unveil(800, function() {
-        $(this).load(function() {
+        $(this).parents('.isotope-item').removeClass('isotope-hidden');
+        $(this).imagesLoaded(function() {
             relayout();
         });
     });
