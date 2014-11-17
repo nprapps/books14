@@ -666,7 +666,7 @@ h1 + #story-meta { margin-top: -11px; }
 	display:table;
 	width:100%;
 }
-.modal-body{
+.modal-body-inner{
 	display:table-cell;
 	padding-top: 40px;
 }
@@ -757,6 +757,18 @@ h1 + #story-meta { margin-top: -11px; }
 		font-size: 10px;
 	}
 
+}
+
+.share-buttons{
+	float:left;
+	p{
+		display:inline-block;
+	}
+	.icon{
+		display:inline-block;
+		font-size: 20px;
+		color:@red;
+	}
 }
 
 #modal-close-btn {
@@ -1149,6 +1161,10 @@ footer {
 	.modal-text{
 		margin-left:0;
 		padding-left:0;
+	}
+
+	.book-nav{
+		display:inline-block !important;
 	}
 	
 
