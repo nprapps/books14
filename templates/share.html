@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Best books of 2014 : NPR</title>
+
+    {% if not DEBUG %}
+    <script>
+    window.location = '{{ S3_BASE_URL }}#/book/{{ book.slug }}';
+    </script>
+    {% endif %}
+
+    {# Twitter #}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ twitter_handle }}">
+    <meta name="twitter:image" content="{{ book.thumb }}" />
+
+    {# Facebook #}
+    <meta property="og:title" content="NPR's Best Books of 2014 - {{ book.title }}" />
+    <meta property="og:url" content="{{ SHARE_URL }}#/book/{{ book.slug }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="{{ book.teaser }}" />
+    <meta property="og:image" content="{{ book.thumb }}" />
+    <meta property="og:site_name" content="NPR.org" />
+    <meta property="fb:app_id" content="{{ FACEBOOK_APP_ID }}" />
+
+    {# Google News #}
+    <meta name="thumbnail" content="{{ book.thumb }}" />
+</head>
+
+<body>
+</body>
+
+</html>
+
