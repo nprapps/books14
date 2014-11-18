@@ -30,6 +30,9 @@ REPOSITORY_ALT_URL = None # 'git@bitbucket.org:nprapps/%s.git' % REPOSITORY_NAME
 # Should stay the same, even if PROJECT_SLUG changes
 ASSETS_SLUG = 'books14'
 
+# FB app ID
+FACEBOOK_APP_ID = '138837436154588'
+
 """
 DEPLOYMENT
 """
