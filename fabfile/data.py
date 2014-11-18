@@ -222,23 +222,30 @@ class Book(object):
                 if value == '' or value == None:
                     print '#%s Missing text (review) for %s.' % (kwargs['#'], kwargs['title'])
 
-            if key in ['book_seamus_id', 'author_seamus_id', 'review_seamus_id'] and value:
-                try:
-                    int(value)
-                    if key in ['review_seamus_id', 'author_seamus_id']:
-                        r = requests.get('http://www.npr.org/%s' % value)
-                        soup = BeautifulSoup(r.content)
-                        setattr(
-                            self,
-                            key.replace('_id', '_headline'),
-                            soup.select('div.storytitle h1')[0].text.strip())
+            # Look up coverage
+            if key == 'book_seamus_id' and value:
+                value = int(value)
+                print 'Getting coverage for %s from http://www.npr.org/%s' % (kwargs['title'], value)
+                r = requests.get('http://www.npr.org/%s' % value)
+                soup = BeautifulSoup(r.content)
+                items = soup.select('.storylist article')
+                item_list = []
+                if len(items):
+                    for item in items:
+                        link = {
+                            'category': '',
+                            'title': item.select('.title')[0].text.strip(),
+                            'url': item.select('a')[0].attrs.get('href'),
+                        }
+                        category_elements = item.select('.slug')
+                        if len(category_elements):
+                            link['category'] = category_elements[0].text.strip()
+                        item_list.append(link)
+                        print '- Adding link: %(category)s: %(title)s (%(url)s)' % link
+                else:
+                    print '- No links found for %s' % kwargs['title']
+                setattr(self, 'links', item_list)
 
-                except ValueError:
-                    print '#%s Invalid %s: "%s"' % (kwargs['#'], key, value)
-                    continue
-
-                except IndexError:
-                    print '#%s Invalid headline for http://www.npr.org/%s' % (kwargs['#'], value)
 
             if key == 'isbn':
                 value = value.zfill(10)
