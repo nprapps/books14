@@ -379,7 +379,7 @@ var relayout = _.throttle(function() {
  * Begin unveiling visible books in the grid.
  */
 var unveil_grid = function() {
-    $books_grid.find('img').unveil(800, function() {
+    $books_grid.find('img').unveil(500, function() {
         $(this).parents('.isotope-item').removeClass('isotope-hidden');
         $(this).imagesLoaded(function() {
             relayout();
@@ -463,8 +463,6 @@ $(function() {
     if (MOBILE) {
         $books_grid.addClass('no-transition');
         $review.remove();
-    } else {
-        $body.append('<style>.book.card { width: 250px; }</style>');
     }
 
     // Set up the hasher bits to grab the URL hash.
@@ -473,6 +471,6 @@ $(function() {
     hasher.init();
 
     // Set up the grid.
-    _.delay(unveil_grid, 1000);
+    _.delay(unveil_grid, 0);
 
 });
