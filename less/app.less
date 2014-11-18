@@ -265,6 +265,10 @@ h1 + #story-meta { margin-top: -11px; }
 	width: 16.66666666666667%;
 	padding-bottom: 10px;
 
+  a {
+    display: block;
+  }
+
     @media screen and (max-width: 1400px){
 	    width: 20%;
     }
@@ -434,6 +438,14 @@ h1 + #story-meta { margin-top: -11px; }
 			max-height: 0;
 			.scale(0);
 			opacity: 0;
+		}
+	}
+		p{
+		color:black;
+		text-align:center;
+		font-size: 12px;
+		a{
+			color:@red;
 		}
 	}
 }
@@ -662,25 +674,50 @@ h1 + #story-meta { margin-top: -11px; }
 .modal {
 	-webkit-overflow-scrolling: touch;
 }
+.modal-body-wrapper{
+	display:table;
+	width:100%;
+}
+.modal-body-inner{
+	display:table-cell;
+	padding-top: 40px;
+}
+
+.paddle{
+	display:table-cell;
+	vertical-align:middle;
+	width: 45px;
+	text-align:center;
+	transition: background-color 0.3s ease;
+	&:hover{
+		background-color:#ededed;
+	}
+	span{
+		font-size:42px;
+		color:grey;
+	}
+}
 
 .modal-book-cover {
-	margin-left: auto;
-	margin-right: auto;
-    text-align: center;
+	float: left;
+	width:30%;
 }
 .modal-book-cover img {
 	width: 100%;
-	max-width: 450px;
+	// max-width: 450px;
 	margin-bottom: 2em;
 
-	@media screen and (max-width: 1200px) {
-		width: 300px;
-	}
+	// @media screen and (max-width: 1200px) {
+	// 	width: 300px;
+	// }
 }
 
 .modal-text {
 	text-align: left;
 	font-size: 16px;
+	// float: left;
+	margin-left: 30%;
+	padding-left: 20px;
 
 	.modal-title {
 		font-size: 32px;
@@ -721,6 +758,7 @@ h1 + #story-meta { margin-top: -11px; }
 
 .modal-dialog {
 	width: 80%;
+	max-width:1100px;
 }
 
 .modal-nav-buttons {
@@ -733,9 +771,22 @@ h1 + #story-meta { margin-top: -11px; }
 
 }
 
+.share-buttons{
+	float:left;
+	p{
+		display:inline-block;
+	}
+	.icon{
+		display:inline-block;
+		font-size: 20px;
+		color:@red;
+	}
+}
+
 #modal-close-btn {
-	color: @red;
-	border: none;
+	color: black;
+	border: solid 1px black;
+	float:right;
 }
 
 #modal-close-btn:hover {
@@ -974,15 +1025,7 @@ footer {
 			.modal-header {
 				background: #f6f6f6;
 				margin-bottom: @line-height-computed;
-
-				.npr-logo {
-					width: 127px;
-					display: inline-block !important;
-
-					img {
-						max-width: 100%;
-					}
-				}
+				display:block !important;
 
 				.close {
 					display: none;
@@ -1000,14 +1043,17 @@ footer {
 			}
 		}
 
-		.modal-body.row {
-			margin: 0;
-			padding: 0;
-		}
-
 		.modal-book-cover {
 			float: right;
 			width: 33.33333%;
+		}
+
+		.paddle{
+			display:none;
+		}
+
+		.modal-footer{
+			display:block !important;
 		}
 
 		.tags {
@@ -1019,7 +1065,7 @@ footer {
 @media (min-width: @screen-sm){
 
 	.header-wrapper {
-		padding: 0 30px;
+		padding: 0 30px 20px 30px;
 	}
 
 	.book-container {
@@ -1099,8 +1145,15 @@ footer {
 	}
 	
 	.modal-dialog {
-		width: 70%;
+		width: 90%;
 	}
+	.modal-text{
+		margin-left:20%;
+	}
+	.modal-book-cover{
+		width:20%;
+	}
+
 }
 @media (max-width: 767px) {
 	//nav, header, footer { margin-left: -20px; margin-right: -20px; }
@@ -1116,6 +1169,16 @@ footer {
 		width: 250px;
 		max-width: 100%;
 	}
+
+	.modal-text{
+		margin-left:0;
+		padding-left:0;
+	}
+
+	.book-nav{
+		display:inline-block !important;
+	}
+	
 
 }
 @media (max-width: 480px) {
@@ -1154,18 +1217,13 @@ footer {
 /**** Isotope Filtering ****/
 
 .isotope-item {
-  z-index: 2;
+    z-index: 2;
 }
 
 .isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
-}
-
-// CEG: display none, not just z-index
-// so that unveil doesn't trigger
-.isotope-hidden {
-    display: none;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
 /**** Isotope CSS3 transitions ****/

@@ -1,76 +1,95 @@
-<div class="modal-header">
+<div class="modal-header hide">
     <!-- <a class="hide npr-logo" href="http://npr.org/books/"><img src="http://media.npr.org/chrome/books/npr-books-logo-color.png" alt="NPR Books" /></a> -->
     <a href="#" class="hide mobile-dismiss" data-dismiss="modal" aria-hidden="true"><i class="icon-chevron-left"></i> Back to NPR&rsquo;s Book Concierge</a>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 </div>
+<div class="modal-body-wrapper">
+    <a class="paddle" href="#/book/<%= previous %>" id="previous-book">
+        <% if (previous != null){  %>
+        <span class="icon icon-angle-left"></span>
+        <% } %>
+    </a>
+    <div class="modal-body-inner">
+        <div class="modal-body">
+            <div class="modal-book-cover">
+                <img id="book-image" src="assets/cover/<%= book.slug %><% if (SMALL_MOBILE) { %>-thumb<% } %>.jpg" alt="<%= book.title %>"/>
+            </div>
 
-<div class="modal-body">
-    <div class="row">
-        <div class="modal-book-cover col-md-5">
-            <img id="book-image" src="assets/cover/<%= book.slug %><% if (SMALL_MOBILE) { %>-thumb<% } %>.jpg" alt="<%= book.title %>"/>
+            <div class="modal-text">
+                <h4 class="modal-title" id="myModalLabel"><%= book.title %></h4>
+                <% if(book.author) { %><p class="author">By <%= book.author %></p> <% } %>
+                <% if(book.genre) { %><p class="genre"><strong><%= COPY.content.genre %> </strong><%= book.genre %></p> <% } %>
+
+                <!-- Tags -->
+                <% if(book.tags.length > 0) { %><p class="tags"><strong><%= COPY.content.tag_list %> </strong><% _.each(book.tags, function(tag, index, list){ %>
+                    <a
+                        class="btn btn-large btn-info tag"
+                        href="#/tag/<%= tag %>"><%= COPY.tags[tag] %>
+                    </a>
+                <% }); %></p> <% } %>
+
+                <!-- Book Description/Review -->
+                <% if(book.text) { %><p class="text"><%= book.text %></p> <% } %>
+                <% if(book.reviewer) { %><p class="reviewer">&mdash; <%= COPY.content.recommended_by %> <strong><% if (book['reviewer link']) { %><a href="<%= book['reviewer link'] %>" target="_blank"><%= book.reviewer %></a><% } else { %><%= book.reviewer %><% } %></strong><% if (book['reviewer ID']) { %>, <%= book['reviewer ID'] %><% } %></p> <% } %>
+
+                <!-- Purchase/Related Links -->
+
+                <p class="book-modal-links">
+                    <a href="http://www.amazon.com/dp/<%= book.isbn %>?tag=npr-5-20" target="_blank" class="purchase-link">Amazon</a>
+                    <% if (book.hide_ibooks != 'TRUE') { %>
+                    <a href="https://itunes.apple.com/us/book/isbn<%= book.isbn13 %>?&at=11l79Y" target="_blank" class="purchase-link">iBooks</a>
+                    <% } %>
+                    <a href="http://www.indiebound.org/book/<%= book.isbn %>?aff=NPR" target="_blank" class="purchase-link">Independent&nbsp;Booksellers</a>
+                </p>
+
+                <ul>
+                    <% if (book.review_seamus_id){  %>
+                    <li class="review_seamus_id book-modal-links">
+                    <a href="http://npr.org/<%= book.review_seamus_id %>" target="_blank"><strong><%= COPY.content.npr_review_link %></strong> <%= book.review_seamus_headline %></a>
+                    </li>
+                    <% } %>
+
+                    <% if (book.author_seamus_id){  %>
+                    <li class="author_seamus_id book-modal-links">
+                        <a href="http://npr.org/<%= book.author_seamus_id %>" target="_blank">
+                            <strong><%= COPY.content.npr_author_link %></strong>
+                            <% if (book.author_seamus_headline) { %>
+                                <%= book.author_seamus_headline %>
+                            <% } else { %>
+                                <%= book.author %>
+                            <% } %>
+                        </a>
+                    </li>
+                    <% } %>
+                </ul>
+            </div>
         </div>
 
-        <div class="modal-text col-md-7">
-            <h4 class="modal-title" id="myModalLabel"><%= book.title %></h4>
-            <% if(book.author) { %><p class="author">By <%= book.author %></p> <% } %>
-            <% if(book.genre) { %><p class="genre"><strong><%= COPY.content.genre %> </strong><%= book.genre %></p> <% } %>
-
-            <!-- Tags -->
-            <% if(book.tags.length > 0) { %><p class="tags"><strong><%= COPY.content.tag_list %> </strong><% _.each(book.tags, function(tag, index, list){ %>
-                <a
-                    class="btn btn-large btn-info tag"
-                    href="#/tag/<%= tag %>"><%= COPY.tags[tag] %>
-                </a>
-            <% }); %></p> <% } %>
-
-            <!-- Book Description/Review -->
-            <% if(book.text) { %><p class="text"><%= book.text %></p> <% } %>
-            <% if(book.reviewer) { %><p class="reviewer">&mdash; <%= COPY.content.recommended_by %> <strong><% if (book['reviewer link']) { %><a href="<%= book['reviewer link'] %>" target="_blank"><%= book.reviewer %></a><% } else { %><%= book.reviewer %><% } %></strong><% if (book['reviewer ID']) { %>, <%= book['reviewer ID'] %><% } %></p> <% } %>
-
-            <!-- Purchase/Related Links -->
-
-            <p class="book-modal-links">
-                <a href="http://www.amazon.com/dp/<%= book.isbn %>?tag=npr-5-20" target="_blank" class="purchase-link">Amazon</a>
-                <% if (book.hide_ibooks != 'TRUE') { %>
-                <a href="https://itunes.apple.com/us/book/isbn<%= book.isbn13 %>?&at=11l79Y" target="_blank" class="purchase-link">iBooks</a>
+        <div class="modal-footer">
+            <div class="share-buttons">
+                <p>Share Review:</p>
+                <span class="icon icon-envelope">
+                <span class="icon icon-twitter-sign">
+                <span class="icon icon-facebook-sign">
+                <span class="icon icon-pinterest-sign">
+            </div>
+            <div class="hide book-nav">
+                <% if (previous != null){ %>
+                <a href="#/book/<%= previous %>" class="btn btn-default modal-nav-buttons" id="previous-book">PREVIOUS BOOK</a>
                 <% } %>
-                <a href="http://www.indiebound.org/book/<%= book.isbn %>?aff=NPR" target="_blank" class="purchase-link">Independent&nbsp;Booksellers</a>
-            </p>
-
-            <ul>
-                <% if (book.review_seamus_id){  %>
-                <li class="review_seamus_id book-modal-links">
-                <a href="http://npr.org/<%= book.review_seamus_id %>" target="_blank"><strong><%= COPY.content.npr_review_link %></strong> <%= book.review_seamus_headline %></a>
-                </li>
+                <% if (next != null){ %>
+                <a href="#/book/<%= next %>" class="btn btn-default modal-nav-buttons" id="next-book">NEXT BOOK</a>
                 <% } %>
-
-                <% if (book.author_seamus_id){  %>
-                <li class="author_seamus_id book-modal-links">
-                    <a href="http://npr.org/<%= book.author_seamus_id %>" target="_blank">
-                        <strong><%= COPY.content.npr_author_link %></strong>
-                        <% if (book.author_seamus_headline) { %>
-                            <%= book.author_seamus_headline %>
-                        <% } else { %>
-                            <%= book.author %>
-                        <% } %>
-                    </a>
-                </li>
-                <% } %>
-            </ul>
-
+            </div>
+            <button type="button" class="btn btn-default" id="modal-close-btn" data-dismiss="modal">Close</button>
         </div>
     </div>
+
+    <a class="paddle" href="#/book/<%= next %>" id="next-book">
+        <% if (next != null){  %>
+        <span class="icon icon-angle-right"></span>
+        <% } %>
+    </a>
 </div>
 
-<div class="modal-footer">
 
-    <% if (previous != null){  %>
-    <a href="#/book/<%= previous %>" class="btn btn-default modal-nav-buttons" id="previous-book">PREVIOUS BOOK</a>
-    <% } %>
-
-    <% if (next != null){  %>
-    <a href="#/book/<%= next %>" class="btn btn-default modal-nav-buttons" id="next-book">NEXT BOOK</a>
-    <% } %>
-    <button type="button" class="btn btn-default" id="modal-close-btn" data-dismiss="modal">Close</button>
-
-</div>

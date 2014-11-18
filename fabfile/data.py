@@ -26,9 +26,12 @@ SLUGS_TO_TAGS = {}
 @task(default=True)
 def update():
     """
-    Stub function for updating app-specific data.
+    Load books and covers
     """
+    load_books()
+    load_images()
     #update_featured_social()
+
 
 @task
 def update_featured_social():

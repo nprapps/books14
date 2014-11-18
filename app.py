@@ -30,36 +30,62 @@ def index():
         books_text_only = books[:]
         books_text_only = sorted(books, key=lambda k: k['title'])
 
-    tag_stripper = re.compile(r'<.*?>')
-
     for book in books:
         if not book['text']:
             book['teaser'] = None
-            continue
-
-        img = Image.open('www/assets/cover/%s-thumb.jpg' % book['slug'])
-        width, height = img.size
-
-        # Poor man's packing algorithm. How much text will fit?
-        chars = height / 25 * 10;
-
-        text = tag_stripper.sub('', book['text'])
-
-        if len(text) <= chars:
-            book['teaser'] = text
-            continue
-
-        i = chars
-
-        while text[i] != ' ':
-            i -= 1
-
-        book['teaser'] = '&#8220;' + text[:i] + ' ...&#8221;'
+        else:
+            book['teaser'] = _make_teaser(book)
 
     context['books'] = books
     context['books_text_only'] = books_text_only
 
     return render_template('index.html', **context)
+
+def _make_teaser(book):
+    """
+    Calculate a teaser
+    """
+    tag_stripper = re.compile(r'<.*?>')
+    img = Image.open('www/assets/cover/%s-thumb.jpg' % book['slug'])
+    width, height = img.size
+
+    # Poor man's packing algorithm. How much text will fit?
+    chars = height / 25 * 10;
+
+    text = tag_stripper.sub('', book['text'])
+
+    if len(text) <= chars:
+        return text
+
+    i = chars
+
+    while text[i] != ' ':
+        i -= 1
+
+    return '&#8220;' + text[:i] + ' ...&#8221;'
+
+@app.route('/share/<slug>.html')
+def share(slug):
+    featured_book = None
+    context = make_context()
+    with open('www/static-data/books.json', 'rb') as f:
+        books = json.load(f)
+        for book in books:
+            if book.get('slug') == slug:
+                featured_book = book
+                break
+
+    if not featured_book:
+        return 404
+
+    featured_book['teaser'] = _make_teaser(featured_book)
+    featured_book['thumb'] = "%sassets/cover/%s-thumb.jpg" % (context['SHARE_URL'], featured_book['slug'])
+
+    context['twitter_handle'] = 'nprbooks'
+    context['book'] = featured_book
+
+    return make_response(render_template('share.html', **context))
+
 
 @app.route('/comments/')
 def comments():
