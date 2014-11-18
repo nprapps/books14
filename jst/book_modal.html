@@ -62,10 +62,16 @@
         <div class="modal-footer">
             <div class="share-buttons">
                 <p>Share Review:</p>
-                <span class="icon icon-envelope">
-                <span class="icon icon-twitter-sign">
-                <span class="icon icon-facebook-sign">
-                <span class="icon icon-pinterest-sign">
+                <span class="icon icon-envelope"></span>
+                <a href="https://twitter.com/share?text=<%= encodeURIComponent(book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank">
+                    <span class="icon icon-twitter-sign"></span>
+                </a>
+                <a href="https://www.facebook.com/dialog/share?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank">
+                    <span class="icon icon-facebook-sign"></span>
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank">
+                    <span class="icon icon-pinterest-sign"></span>
+                </a>
             </div>
             <div class="hide book-nav">
                 <% if (previous != null){ %>
