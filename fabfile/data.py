@@ -206,6 +206,7 @@ class Book(object):
         Removes non-integer junk from the cells.
         Serializes based on commas.
         """
+        print 'Processing %s (http://www.npr.org/%s)' % (kwargs['title'], kwargs['book_seamus_id'])
         for key, value in kwargs.items():
 
             # Kill smart quotes in fields
@@ -217,12 +218,10 @@ class Book(object):
 
             if key == 'text':
                 if value == '' or value == None:
-                    print '#%s Missing text (review) for %s.' % (kwargs['#'], kwargs['title'])
+                    print 'ERROR: Missing review for %s.' % kwargs['title']
 
             # Look up coverage
             if key == 'book_seamus_id' and value:
-                value = int(value)
-                print 'Getting coverage for %s from http://www.npr.org/%s' % (kwargs['title'], value)
                 r = requests.get('http://www.npr.org/%s' % value)
                 soup = BeautifulSoup(r.content)
                 items = soup.select('.storylist article')
@@ -238,10 +237,12 @@ class Book(object):
                         if len(category_elements):
                             link['category'] = category_elements[0].text.strip()
                         item_list.append(link)
-                        print '- Adding link: %(category)s: %(title)s (%(url)s)' % link
+                        print 'LOG: Adding link: %(category)s: %(title)s (%(url)s)' % link
                 else:
-                    print '- No links found for %s' % kwargs['title']
+                    print 'LOG: No links found for %s' % kwargs['title']
                 setattr(self, 'links', item_list)
+            elif key == 'book_seamus_id' and not value:
+                print 'ERROR: No seamus book id for %s' % kwargs['title']
 
 
             if key == 'isbn':
@@ -269,7 +270,7 @@ class Book(object):
                         if tag_slug:
                             item_list.append(tag_slug)
                         else:
-                            print "#%s Unknown tag: '%s'" % (kwargs['#'], item)
+                            print "ERROR: Unknown tag: '%s'" % item
 
                 # Set the attribute with the corrected value, which is a list.
                 setattr(self, key, item_list)
@@ -277,24 +278,26 @@ class Book(object):
                 # Don't modify the value for stuff that isn't in the list above.
                 setattr(self, key, value)
 
-        # Calculate ISBN-13
-        # To resolve #249
-        # See: http://www.ehow.com/how_5928497_convert-10-digit-isbn-13.html
-        #print 'ISBN10: %s' % self.isbn
-        isbn = '978%s' % self.isbn[:9]
-        sum_even = 3 * sum(map(int, [isbn[1], isbn[3], isbn[5], isbn[7], isbn[9], isbn[11]]))
-        sum_odd = sum(map(int, [isbn[0], isbn[2], isbn[4], isbn[6], isbn[8], isbn[10]]))
-        remainder = (sum_even + sum_odd) % 10
-        check = 10 - remainder if remainder else 0
-
-        self.isbn13 = '%s%s' % (isbn, check)
-        #print 'ISBN13: %s' % self.isbn13
+        # Calculate ISBN-13, see: http://www.ehow.com/how_5928497_convert-10-digit-isbn-13.html
+        if self.isbn.startswith('978'):
+            self.isbn13 = self.isbn
+            print 'ISBN already 13 digits (%s)' % self.isbn
+        else:
+            isbn = '978%s' % self.isbn[:9]
+            sum_even = 3 * sum(map(int, [isbn[1], isbn[3], isbn[5], isbn[7], isbn[9], isbn[11]]))
+            sum_odd = sum(map(int, [isbn[0], isbn[2], isbn[4], isbn[6], isbn[8], isbn[10]]))
+            remainder = (sum_even + sum_odd) % 10
+            check = 10 - remainder if remainder else 0
+            self.isbn13 = '%s%s' % (isbn, check)
+            print 'LOG: Converted ISBN-10 (%s) to ISBN-13 (%s)' % (self.isbn, self.isbn13)
 
         # Slugify.
         slug = self.title.lower()
         slug = re.sub(r"[^\w\s]", '', slug)
         slug = re.sub(r"\s+", '-', slug)
         self.slug = slug[:254]
+
+        print ''
 
 def get_books_csv():
     """
