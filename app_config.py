@@ -15,7 +15,7 @@ NAMES
 """
 # Project name to be used in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = 'books14'
+PROJECT_SLUG = 'best-books-2014'
 
 # Project name to be used in file paths
 PROJECT_FILENAME = 'books14'
@@ -191,7 +191,7 @@ def configure_targets(deployment_target):
         SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         SERVER_LOG_PATH = '/var/log/%s' % PROJECT_FILENAME
         DISQUS_SHORTNAME = 'nprviz-test'
-        DEBUG = True
+        DEBUG = False
     else:
         S3_BUCKET = None
         S3_BASE_URL = 'http://127.0.0.1:8000'
