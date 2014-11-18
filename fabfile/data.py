@@ -226,24 +226,28 @@ class Book(object):
             # Look up coverage
             if key == 'book_seamus_id' and value:
                 r = requests.get('http://www.npr.org/%s' % value)
-                soup = BeautifulSoup(r.content)
-                items = soup.select('.storylist article')
-                item_list = []
-                if len(items):
-                    for item in items:
-                        link = {
-                            'category': '',
-                            'title': item.select('.title')[0].text.strip(),
-                            'url': item.select('a')[0].attrs.get('href'),
-                        }
-                        category_elements = item.select('.slug')
-                        if len(category_elements):
-                            link['category'] = category_elements[0].text.strip()
-                        item_list.append(link)
-                        print 'LOG: Adding link: %(category)s: %(title)s (%(url)s)' % link
-                else:
-                    print 'LOG: No links found for %s' % kwargs['title']
-                setattr(self, 'links', item_list)
+                try:
+                    soup = BeautifulSoup(r.content)
+                    items = soup.select('.storylist article')
+                    item_list = []
+                    if len(items):
+                        for item in items:
+                            link = {
+                                'category': '',
+                                'title': item.select('.title')[0].text.strip(),
+                                'url': item.select('a')[0].attrs.get('href'),
+                            }
+                            category_elements = item.select('.slug')
+                            if len(category_elements):
+                                link['category'] = category_elements[0].text.strip()
+                            item_list.append(link)
+                            print 'LOG: Adding link: %(category)s: %(title)s (%(url)s)' % link
+
+                    else:
+                        print 'LOG: No links found for %s' % kwargs['title']
+                    setattr(self, 'links', item_list)
+                except:
+                    print "SOMETHING WENT WRONG!!!"
             elif key == 'book_seamus_id' and not value:
                 print 'ERROR: No seamus book id for %s' % kwargs['title']
 
