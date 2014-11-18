@@ -451,10 +451,123 @@ h1 + #story-meta { margin-top: -11px; }
 	}
 }
 
+.tag-color(@color){
+	border: lighten(desaturate(@color, 40%),20%);
+	background-color: lighten(desaturate(@color, 30%),10%);
+	color: white;
+}
+
+.npr-staff-picks{
+	.tag-color(#4be5b3);
+}
+
+.biography-and-memoir{
+	.tag-color(#45d6a7);
+}
+
+.book-club-ideas{
+	.tag-color(#48d4c4);
+}
+
+.comics-and-graphic-novels{
+	.tag-color(#43c5b6);
+}
+
+.cookbooks-and-food{
+	.tag-color(#46b5c3);
+}
+
+.eye-opening-reads{
+	.tag-color(#41a7b4);
+}
+
+.family-matters{
+	.tag-color(#458cb4);
+}
+
+.for-art-lovers{
+	.tag-color(#4267a4);
+}
+
+.for-history-lovers{
+	.tag-color(#3c5d95);
+}
+
+.funny-stuff{
+	.tag-color(#3e4695);
+}
+
+.historical-fiction{
+	.tag-color(#383f86);
+}
+
+.its-all-geek-to-me{
+	.tag-color(#3d2d86);
+}
+
+.kids-books{
+	.tag-color(#f97450);
+}
+
+.lets-talk-about-sex{
+	.tag-color(#f97450);
+}
+
+.love-stories{
+	.tag-color(#f97450);
+}
+
+.mysteries-and-thrillers{
+	.tag-color(#f97450);
+}
+
+.poetry{
+	.tag-color(#f97450);
+}
+
+.rather-long{
+	.tag-color(#f97450);
+}
+
+.rather-short{
+	.tag-color(#f97450);
+}
+
+.realistic-fiction{
+	.tag-color(#f97450);
+}
+
+.science-and-society{
+	.tag-color(#f97450);
+}
+
+.science-fiction-and-fantasy{
+	.tag-color(#f97450);
+}
+
+.seriously-great-writing{
+	.tag-color(#f97450);
+}
+
+.tales-from-around-the-world{
+	.tag-color(#f97450);
+}
+
+.the-dark-side{
+	.tag-color(#f97450);
+}
+
+.young-adult{
+	.tag-color(#f97450);
+}
+
+
+
+
 .tag {
 	border: none;
-	background-color: lighten(@red, 45%);
-	color: @red;
+	// background-color: lighten(@red, 45%);
+	// color: @red;
 	font-weight: normal;
 	font-size: 12px;
 	
@@ -518,8 +631,8 @@ h1 + #story-meta { margin-top: -11px; }
 
 	@media screen and (min-width: @screen-sm){
 		.tags-wrapper & {
-			background: lighten(#f1d0ca, 8%);
-			color: @red;
+			// background: lighten(#f1d0ca, 8%);
+			// color: @red;
 			padding: 5px 25px 5px 15px;
 			margin: 0;
 			white-space: normal;
@@ -528,7 +641,7 @@ h1 + #story-meta { margin-top: -11px; }
 			-webkit-font-smoothing: subpixel-antialiased;
 			display: block;
 			width: 100%;
-			border-width: 0 0 2px !important;
+			border-width: 0 0 3px !important;
 			border-style: solid !important;
 			border-color: #fff !important;
 
