@@ -441,7 +441,7 @@ h1 + #story-meta { margin-top: -11px; }
 	@media screen and (min-width: @screen-sm){
 
 		.tags {
-			margin-top: 20px;
+			margin-top: -14px;
 		}
 	}
 }
@@ -803,9 +803,13 @@ li:nth-child(28){
 .current-tag {
     display: none;
     padding-left: 4px;
-    padding-bottom: @line-height-computed / 2;
+    // padding-bottom: @line-height-computed / 2;
+    padding-bottom:50px;
     margin-top: 11px;
     // text-align:center;
+    text-transform:uppercase;
+    font-size:13px;
+    color:@gray-medium;
 
     #tag-span {
         font-style: italic; 
@@ -1266,19 +1270,18 @@ footer {
 			text-align: right;
 
 			h4 {
-				font-size: 18px;
+				font-size: 19px;
 				line-height: 1.2;
 				margin-top: 0;
 				clear: both;
 				// background: @read;
 				padding: 7px;
-				color: #4cc6ad;
+				color: @text;
 				position: relative;
 				text-align: left;
 				margin-bottom: 0;
 				// margin-bottom: @line-height-computed;
 				// font-weight: bold;
-				text-transform:uppercase;
 				-webkit-font-smoothing: antialiased;
 				// .border-radius(6px);
 
@@ -1440,3 +1443,4 @@ footer {
        -o-transition-duration: 0s;
           transition-duration: 0s;
 }
+
