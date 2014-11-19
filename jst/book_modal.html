@@ -10,7 +10,7 @@
         <% } %>
     </a>
     <div class="modal-body-inner">
-        <div class="modal-body">
+        <div class="modal-body clearfix">
             <div class="modal-book-cover">
                 <img id="book-image" src="assets/cover/<%= book.slug %><% if (SMALL_MOBILE) { %>-thumb<% } %>.jpg" alt="<%= book.title %>"/>
             </div>
@@ -42,36 +42,36 @@
                     <a href="http://www.indiebound.org/book/<%= book.isbn %>?aff=NPR" target="_blank" class="purchase-link">Independent&nbsp;Booksellers</a>
                 </p>
 
+                <% if (book.links) { %>
                 <ul>
-                    <% if (book.review_seamus_id){  %>
-                    <li class="review_seamus_id book-modal-links">
-                    <a href="http://npr.org/<%= book.review_seamus_id %>" target="_blank"><strong><%= COPY.content.npr_review_link %></strong> <%= book.review_seamus_headline %></a>
-                    </li>
-                    <% } %>
-
-                    <% if (book.author_seamus_id){  %>
-                    <li class="author_seamus_id book-modal-links">
-                        <a href="http://npr.org/<%= book.author_seamus_id %>" target="_blank">
-                            <strong><%= COPY.content.npr_author_link %></strong>
-                            <% if (book.author_seamus_headline) { %>
-                                <%= book.author_seamus_headline %>
-                            <% } else { %>
-                                <%= book.author %>
-                            <% } %>
+                    <% _.each(book.links, function(link) { %>
+                    <li class="book-modal-links">
+                        <a href="http://npr.org/<%= link.url %>" target="_blank">
+                            <strong>
+                            <% if (link.category) { %><%= link.category %>:<% } else { %>Feature:<% } %>
+                            </strong>
+                            <%= link.title %>
                         </a>
                     </li>
-                    <% } %>
+                    <% }) %>
                 </ul>
+                <% } %>
             </div>
         </div>
 
         <div class="modal-footer">
             <div class="share-buttons">
                 <p>Share Review:</p>
-                <span class="icon icon-envelope">
-                <span class="icon icon-twitter-sign">
-                <span class="icon icon-facebook-sign">
-                <span class="icon icon-pinterest-sign">
+                <span class="icon icon-envelope"></span>
+                <a href="https://twitter.com/share?text=<%= encodeURIComponent(book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank">
+                    <span class="icon icon-twitter-sign"></span>
+                </a>
+                <a href="https://www.facebook.com/dialog/share?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank">
+                    <span class="icon icon-facebook-sign"></span>
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug + "-thumb.jpg") %>" target="_blank">
+                    <span class="icon icon-pinterest-sign"></span>
+                </a>
             </div>
             <div class="hide book-nav">
                 <% if (previous != null){ %>

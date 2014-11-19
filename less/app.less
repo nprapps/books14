@@ -262,7 +262,7 @@ h1 + #story-meta { margin-top: -11px; }
 
 // Book cards
 .card {
-	width: 16.66666666666667%;
+	// width: 20%;
 	padding-bottom: 10px;
 
   a {
@@ -270,7 +270,7 @@ h1 + #story-meta { margin-top: -11px; }
   }
 
     @media screen and (max-width: 1400px){
-	    width: 20%;
+      width: 25%;
     }
     
     @media screen and (max-width: @screen-md-max){
@@ -443,7 +443,8 @@ h1 + #story-meta { margin-top: -11px; }
 		p{
 		color:black;
 		text-align:center;
-		font-size: 12px;
+		font-size: 15px;
+		margin-top:10px;
 		a{
 			color:@red;
 		}
@@ -761,18 +762,14 @@ h1 + #story-meta { margin-top: -11px; }
 	max-width:1100px;
 }
 
-.modal-nav-buttons {
-	margin: 0;
-	color: #333 !important;
 
-	@media (max-width: 480px) {
-		font-size: 10px;
-	}
-
-}
 
 .share-buttons{
 	float:left;
+	@media (max-width: 620px) {
+		float:none;
+		display:block;
+	}
 	p{
 		display:inline-block;
 	}
@@ -780,13 +777,26 @@ h1 + #story-meta { margin-top: -11px; }
 		display:inline-block;
 		font-size: 20px;
 		color:@red;
+		@media (max-width: 767px) {
+			font-size:30px;
+			margin-right:4px;
+			margin-bottom:20px;
+		}
 	}
 }
+
+.modal-nav-buttons {
+	margin: 0;
+	color: #333 !important;
+}
+
 
 #modal-close-btn {
 	color: black;
 	border: solid 1px black;
 	float:right;
+	margin-top:0;
+	margin-left:5px;
 }
 
 #modal-close-btn:hover {

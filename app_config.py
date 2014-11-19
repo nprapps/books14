@@ -15,7 +15,7 @@ NAMES
 """
 # Project name to be used in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = 'books14'
+PROJECT_SLUG = 'best-books-2014'
 
 # Project name to be used in file paths
 PROJECT_FILENAME = 'books14'
@@ -29,6 +29,9 @@ REPOSITORY_ALT_URL = None # 'git@bitbucket.org:nprapps/%s.git' % REPOSITORY_NAME
 # Project name used for assets rig
 # Should stay the same, even if PROJECT_SLUG changes
 ASSETS_SLUG = 'books14'
+
+# FB app ID
+FACEBOOK_APP_ID = '138837436154588'
 
 """
 DEPLOYMENT
@@ -100,8 +103,11 @@ COPY_PATH = 'data/copy.xlsx'
 """
 DATA
 """
+# 2013
+#DATA_GOOGLE_DOC_KEY = '0AlPD88PpyGPUdExyUWV1Z2ZleVl6cGpJa0tOQkMzZnc'
 
-DATA_GOOGLE_DOC_KEY = '0AlPD88PpyGPUdExyUWV1Z2ZleVl6cGpJa0tOQkMzZnc'
+# 2014
+DATA_GOOGLE_DOC_KEY = '0AvlX2ijdYanwdGVlbS1adk5mbmdTNDR2MVA3RS1HMXc'
 
 """
 SHARING
@@ -185,7 +191,7 @@ def configure_targets(deployment_target):
         SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         SERVER_LOG_PATH = '/var/log/%s' % PROJECT_FILENAME
         DISQUS_SHORTNAME = 'nprviz-test'
-        DEBUG = True
+        DEBUG = False
     else:
         S3_BUCKET = None
         S3_BASE_URL = 'http://127.0.0.1:8000'
