@@ -643,14 +643,14 @@ li:nth-child(28){
 			font-size: 16px;
 			content: "\f056";
 			position: absolute;
-			right: 8px;
-			top: 5px;
-			color: lighten(@red, 30%);
+			right: 15px;
+			top: 3px;
+			color: darken(@white, 30%);
 		}
 
-		.tags-wrapper & {
-			width: 100%;
-		}
+		// .tags-wrapper & {
+		// 	width: 100%;
+		// }
 
 		&:hover {
 			color: white;
@@ -683,7 +683,7 @@ li:nth-child(28){
 
 			&.selected {
 				background: @black;
-				padding: 5px 25px 5px 15px;
+				padding: 5px 40px 5px 15px;
 				color: white;
 				display: block;
 
@@ -710,7 +710,7 @@ li:nth-child(28){
 
 .clear-tags, .show-text, .show-books {
     border: none;
-    width: 100%;
+    // width: 100%;
     background-color: transparent;
     color: @red;
     margin: 0;
@@ -750,14 +750,14 @@ li:nth-child(28){
     .icon-remove-circle {
     	font-size: 20px;
     	position: absolute;
-    	right: -4px;
-    	top: 4px;
+    	right: -30px;
+    	top: 6px;
     	text-decoration: none;
 
     	@media screen and (max-width: @screen-sm) {
 			left: auto;
-	    	right: -2px;
-	    	top: 0;
+	    	// left: 20px;
+	    	top: 6px;
 	    }
     }
 }
@@ -1175,7 +1175,7 @@ footer {
 		-webkit-overflow-scrolling: touch;
 
 		.modal-dialog {
-			width: 100%;
+			// width: 100%;
 			padding: 0;
 
 			.modal-header {
