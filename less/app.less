@@ -452,115 +452,172 @@ h1 + #story-meta { margin-top: -11px; }
 }
 
 .tag-color(@color){
-	border: lighten(desaturate(@color, 40%),20%);
-	background-color: lighten(desaturate(@color, 30%),30%);
-	color: @gray-dark;
+	border: lighten(desaturate(@color, 20%),10%);
+	background-color: lighten(desaturate(@color, 20%),10%);
+	color: white;
+}
+@tags: #4cc6ad;
+
+
+// .gradient(@n){
+// 	.tag-color(spin(@tags, @n * 5 - 15));
+// }
+
+li:nth-child(3){
+	.tag{
+		.tag-color(@tags);
+	}
 }
 
-.npr-staff-picks{
-	.tag-color(#4be5b3);
+li:nth-child(4){
+	.tag{
+		.tag-color(spin(@tags, 5));
+	}
 }
 
-.biography-and-memoir{
-	.tag-color(#45d6a7);
+li:nth-child(5){
+	.tag{
+		.tag-color(spin(@tags, 10));
+	}
 }
 
-.book-club-ideas{
-	.tag-color(#48d4c4);
+li:nth-child(6){
+	.tag{
+		.tag-color(spin(@tags, 15));
+	}
 }
 
-.comics-and-graphic-novels{
-	.tag-color(#43c5b6);
+li:nth-child(7){
+	.tag{
+		.tag-color(spin(@tags, 20));
+	}
 }
 
-.cookbooks-and-food{
-	.tag-color(#46b5c3);
+li:nth-child(8){
+	.tag{
+		.tag-color(spin(@tags, 25));
+	}
 }
 
-.eye-opening-reads{
-	.tag-color(#41a7b4);
+li:nth-child(9){
+	.tag{
+		.tag-color(spin(@tags, 30));
+	}
 }
 
-.family-matters{
-	.tag-color(#458cb4);
+li:nth-child(10){
+	.tag{
+		.tag-color(spin(@tags, 35));
+	}
 }
 
-.for-art-lovers{
-	.tag-color(#4267a4);
+li:nth-child(11){
+	.tag{
+		.tag-color(spin(@tags, 40));
+	}
 }
 
-.for-history-lovers{
-	.tag-color(#3c5d95);
+li:nth-child(12){
+	.tag{
+		.tag-color(spin(@tags, 45));
+	}
 }
 
-.funny-stuff{
-	.tag-color(#3e4695);
+li:nth-child(13){
+	.tag{
+		.tag-color(spin(@tags, 50));
+	}
 }
 
-.historical-fiction{
-	.tag-color(#383f86);
+li:nth-child(14){
+	.tag{
+		.tag-color(spin(@tags, 55));
+	}
 }
 
-.its-all-geek-to-me{
-	.tag-color(#3d2d86);
+li:nth-child(15){
+	.tag{
+		.tag-color(spin(@tags, 60));
+	}
 }
 
-.kids-books{
-	.tag-color(#f97450);
+li:nth-child(16){
+	.tag{
+		.tag-color(spin(@tags, 65));
+	}
 }
 
-.lets-talk-about-sex{
-	.tag-color(#f97450);
+li:nth-child(17){
+	.tag{
+		.tag-color(spin(@tags, 70));
+	}
 }
 
-.love-stories{
-	.tag-color(#f97450);
+li:nth-child(18){
+	.tag{
+		.tag-color(spin(@tags, 75));
+	}
 }
 
-.mysteries-and-thrillers{
-	.tag-color(#f97450);
+li:nth-child(19){
+	.tag{
+		.tag-color(spin(@tags, 80));
+	}
 }
 
-.poetry{
-	.tag-color(#f97450);
+li:nth-child(20){
+	.tag{
+		.tag-color(spin(@tags, 85));
+	}
 }
 
-.rather-long{
-	.tag-color(#f97450);
+li:nth-child(21){
+	.tag{
+		.tag-color(spin(@tags, 90));
+	}
 }
 
-.rather-short{
-	.tag-color(#f97450);
+li:nth-child(22){
+	.tag{
+		.tag-color(spin(@tags, 95));
+	}
 }
 
-.realistic-fiction{
-	.tag-color(#f97450);
+li:nth-child(23){
+	.tag{
+		.tag-color(spin(@tags, 100));
+	}
 }
 
-.science-and-society{
-	.tag-color(#f97450);
+li:nth-child(24){
+	.tag{
+		.tag-color(spin(@tags, 105));
+	}
 }
 
-.science-fiction-and-fantasy{
-	.tag-color(#f97450);
+li:nth-child(25){
+	.tag{
+		.tag-color(spin(@tags, 110));
+	}
 }
 
-.seriously-great-writing{
-	.tag-color(#f97450);
+li:nth-child(26){
+	.tag{
+		.tag-color(spin(@tags, 115));
+	}
 }
 
-.tales-from-around-the-world{
-	.tag-color(#f97450);
+li:nth-child(27){
+	.tag{
+		.tag-color(spin(@tags, 120));
+	}
 }
 
-.the-dark-side{
-	.tag-color(#f97450);
+li:nth-child(28){
+	.tag{
+		.tag-color(spin(@tags, 125));
+	}
 }
-
-.young-adult{
-	.tag-color(#f97450);
-}
-
 
 
 
@@ -634,16 +691,16 @@ h1 + #story-meta { margin-top: -11px; }
 			// background: lighten(#f1d0ca, 8%);
 			// color: @red;
 			padding: 5px 25px 5px 15px;
-			margin: 0;
-			white-space: normal;
-			font-size: 15px;
+			// margin: 0;
+			// white-space: normal;
+			font-size: 13px;
 			text-align: left;
 			-webkit-font-smoothing: subpixel-antialiased;
 			display: block;
-			width: 100%;
-			border-width: 0 0 3px !important;
-			border-style: solid !important;
-			border-color: #fff !important;
+			// width: 100%;
+			// border-width: 0 0 3px !important;
+			// border-style: solid !important;
+			// border-color: #fff !important;
 
 			&:hover {
 				text-decoration: underline;
@@ -671,9 +728,9 @@ h1 + #story-meta { margin-top: -11px; }
 	}
 }
 
-// .tag.unavailable {
-//     display: none;
-// }
+.tag.unavailable {
+    display: none;
+}
 
 
 .clear-tags, .show-text, .show-books {
