@@ -46,13 +46,19 @@
 @tag-txt:darken(@deep-blue, 10%);
 
 // header
-// @header: #212121;
-// @header: linear-gradient(to right, #74b7a9 , #7d74b7); 
-@header: @gray-light; 
+@header: #212121;
+@header: linear-gradient(to right, #74b7a9 , #7d74b7);  
 @byline: #FFF;
 @header-text: #FFF;
 @header-h1: #FFF;
 @header-h2: #FFF;
+
+@header: lighten(@gray-light, 30%);
+@header: desaturate(lighten(#4cc6ad, 40%), 20%); 
+@byline: @gray-dark;
+@header-text: @gray-dark;
+@header-h1: @gray-dark;
+@header-h2: @gray-dark;
 
 
 // modal
