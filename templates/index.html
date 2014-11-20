@@ -8,6 +8,15 @@
         <p class="byline">by {{ COPY.attribution.byline }}</p>
         <div class="chatter">{{ COPY.content.chatter }}</div>
         <p class="read-more">{{ COPY.content.read_more }}</p>
+        <p class="browse">Browse more books guides: 
+            <a href="http://apps.npr.org/best-books-2013/#/_" target="_blank">2013</a>
+            <a href="ADD URL">2012</a>
+            <a href="ADD URL">2011</a>
+            <a href="ADD URL">2010</a>
+            <a href="ADD URL">2009</a>
+            <a href="ADD URL">2008</a>
+        </p>
+
 <button id="mobile-filters" class="visible-xs btn btn-primary btn-block">{{ COPY.content.filter_button }}</button>
     </div>
 
@@ -29,7 +38,9 @@
 
     <div class="book-container">
         <div class="top-row">
-            <div class="spacer">&nbsp;</div>
+            <div class="spacer">
+                <h4 class="hidden-xs">What would you like to&nbsp;read?</h4>
+            </div>
 
             <div class="title-area">
                 <div class="btn-group btn-group-lg toggle-text grid-active">
@@ -44,7 +55,7 @@
         <div class="grid-row">
             <div class="tags-wrapper">
 
-                <h4 class="hidden-xs">What would you like to&nbsp;read?</h4>
+                
                 <!-- All Tags List -->
                 <ul class="filter tags option-set list-unstyled hidden-xs" data-filter-group="category">
 
@@ -56,14 +67,14 @@
                     {% for row in COPY.tags %}
                        <li>
                            <button
-                           class="btn btn-large btn-info tag"
+                           class="btn btn-large btn-info tag {{ row.key }}"
                            data-filter-value=".tag-{{ row.key }}" data-tag-slug="{{ row.key }}">{{ row.value }}</button>
                        </li>
                     {% endfor %}
 
                         <a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter"><li>Done</li></a>
 
-                        <p class="browse">Browse more books in the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p>
+                        <p>Browse more books in the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p>
                 </ul>
             </div>
             <!-- Book Cards Grid -->
