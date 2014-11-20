@@ -261,7 +261,8 @@ header {
 h1 + #story-meta { margin-top: -11px; }
 
 .toggle-text {
-	// margin: 0 0 @line-height-computed; 
+	// margin: 0 0 @line-height-computed;
+	display:inline-block; 
 
 	@media screen and (max-width: @screen-xs-max) {
 		margin-bottom: 20px;
@@ -836,16 +837,20 @@ li:nth-child(28){
 	display: none;
 }
 
+.current-tag-wrapper{
+	height:39px;
+	display:table;
+	margin-bottom:60px;
+
+}
+
 .current-tag {
-    display: none;
-    padding-left: 4px;
-    // padding-bottom: @line-height-computed / 2;
-    padding-bottom:50px;
-    margin-top: 11px;
-    // text-align:center;
+	display:table-cell;
+	vertical-align:middle;
     text-transform:uppercase;
     font-size:13px;
     color:@gray-medium;
+    margin-top:0;
 
     #tag-span {
         font-style: italic; 
@@ -1308,7 +1313,7 @@ footer {
 			text-align: right;
 
 			h4 {
-				font-size: 19px;
+				font-size: 18px;
 				line-height: 1.2;
 				margin-top: 0;
 				clear: both;
