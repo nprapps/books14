@@ -31,6 +31,8 @@ var $toggle_text;
 var $show_text_button;
 var $show_books_button;
 var $review;
+var $first;
+var $last;
 
 var next;
 var previous;
@@ -130,6 +132,7 @@ var filter_books = function() {
         $clear_tags.removeClass('hide');
         $current_tag.find('#showing-span').text('Showing books tagged ');
         $current_tag.find('#tag-span').text(label);
+        $books_grid.removeClass('filter-inactive');
 
         filter_books_list(filter);
         _.defer(isotope_grid, filter);
@@ -139,6 +142,7 @@ var filter_books = function() {
         $clear_tags.addClass('hide');
         $current_tag.find('#showing-span').text('Showing all books');
         $current_tag.find('#tag-span').text('');
+        $books_grid.addClass('filter-inactive');
 
         filter_books_list(null);
         _.defer(isotope_grid, '*');
@@ -262,21 +266,25 @@ var on_book_hash = function(slug) {
           // Next and previous are based on whole list of books.
           next = grid_item.next();
           previous = grid_item.prev();
+          $first = $books_grid.find('.book').first();
+          $last = $books_grid.find('.book').last();
         } else {
           // Next and previous are based on hidden/not hidden isotope elements.
           next = grid_item.nextAll(':not(.isotope-hidden)').first();
-          previous = grid_item.prevAll(':not(.isotope-hidden)').first();
+          previous = grid_item.prevAll('.book:not(.isotope-hidden)').first();
+          $first = $books_grid.find('.book:not(.isotope-hidden)').first();
+          $last = $books_grid.find('.book:not(.isotope-hidden)').last();
         }
 
 
         // And the buttons fetch the ID of the next element.
         if (next.length === 0) {
-            next = null;
+            next = $first.attr('id');
         } else {
             next = next.attr('id');
         }
         if (previous.length === 0) {
-            previous = null;
+            previous = $last.attr('id');
         } else {
             previous = previous.attr('id');
         }
@@ -289,15 +297,18 @@ var on_book_hash = function(slug) {
         // Next and previous are based whether these items are visible.
         next = grid_item.nextAll(':visible').first();
         previous = grid_item.prevAll(':visible').first();
+        $first = $books_list.find('li:visible').first();
+        $last = $books_list.find('li:visible').last();
+
 
         // And the buttons fetch the data-slug attribute of the next element.
         if (next.length === 0) {
-            next = null;
+            next = $first.attr('data-slug');
         } else {
             next = next.attr('data-slug');
         }
         if (previous.length === 0) {
-            previous = null;
+            previous = $last.attr('data-slug');
         } else {
             previous = previous.attr('data-slug');
         }
