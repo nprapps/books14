@@ -357,13 +357,14 @@ The Google Analytics events tracked in this application are:
 
 |Category|Action|Label|Value|Custom 1|Custom 2|
 |--------|------|-----|-----|--------|--------|
-|$NEW_PROJECT_SLUG|tweet|`location`||||
-|$NEW_PROJECT_SLUG|facebook|`location`||||
-|$NEW_PROJECT_SLUG|email|`location`||||
-|$NEW_PROJECT_SLUG|new-comment||||
-|$NEW_PROJECT_SLUG|open-share-discuss||||
-|$NEW_PROJECT_SLUG|close-share-discuss||||
-|$NEW_PROJECT_SLUG|summary-copied||||
-|$NEW_PROJECT_SLUG|featured-tweet-action|`action`||``tweet_url``|
-|$NEW_PROJECT_SLUG|featured-facebook-action|`action`||``post_url``|
+|books14|tweet|`location`||||
+|books14|facebook|`location`||||
+|books14|email|`location`||||
+|books14|new-comment||||
+|books14|open-share-discuss||||
+|books14|close-share-discuss||||
+|books14|summary-copied||||
+|books14|featured-tweet-action|`action`||``tweet_url``|
+|books14|featured-facebook-action|`action`||``post_url``|
+|books14|view-review|`book_slug`||||
 

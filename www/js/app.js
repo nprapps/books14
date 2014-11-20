@@ -258,9 +258,15 @@ var on_book_hash = function(slug) {
         // The grid item is an id of the book slug.
         grid_item = $('#' + book.slug);
 
-        // Next and previous are based on hidden/not hidden isotope elements.
-        next = grid_item.nextAll(':not(.isotope-hidden)').first();
-        previous = grid_item.prevAll(':not(.isotope-hidden)').first();
+        if ($books_grid.hasClass('filter-inactive')) {
+          // Next and previous are based on whole list of books.
+          next = grid_item.next();
+          previous = grid_item.prev();
+        } else {
+          // Next and previous are based on hidden/not hidden isotope elements.
+          next = grid_item.nextAll(':not(.isotope-hidden)').first();
+          previous = grid_item.prevAll(':not(.isotope-hidden)').first();
+        }
 
 
         // And the buttons fetch the ID of the next element.
@@ -344,7 +350,9 @@ var on_hash_changed = function(new_hash, old_hash) {
         new_hash = '';
     }
 
-    _gaq.push(['_trackPageview', location.pathname + '#' + new_hash]);
+    if (new_hash != '') {
+        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'view-review', hash_slug]);
+    }
 
     first_hash = false;
 
