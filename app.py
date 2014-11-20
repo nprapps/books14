@@ -46,11 +46,15 @@ def _make_teaser(book):
     Calculate a teaser
     """
     tag_stripper = re.compile(r'<.*?>')
-    img = Image.open('www/assets/cover/%s-thumb.jpg' % book['slug'])
-    width, height = img.size
 
-    # Poor man's packing algorithm. How much text will fit?
-    chars = height / 25 * 10;
+    try:
+        img = Image.open('www/assets/cover/%s-thumb.jpg' % book['slug'])
+        width, height = img.size
+
+        # Poor man's packing algorithm. How much text will fit?
+        chars = height / 25 * 10
+    except IOError:
+        chars = 140
 
     text = tag_stripper.sub('', book['text'])
 
