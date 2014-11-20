@@ -344,7 +344,9 @@ var on_hash_changed = function(new_hash, old_hash) {
         new_hash = '';
     }
 
-    _gaq.push(['_trackPageview', location.pathname + '#' + new_hash]);
+    if (new_hash != '') {
+        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'view-review', hash_slug]);
+    }
 
     first_hash = false;
 
