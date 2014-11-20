@@ -5,6 +5,7 @@ import argparse
 import json
 import re
 import static
+import string
 
 from PIL import Image
 from flask import Flask, make_response, render_template
@@ -63,7 +64,17 @@ def _make_teaser(book):
 
     i = chars
 
+    # Walk back to last full word
     while text[i] != ' ':
+        i -= 1
+
+    # Like strip, but decrements the counter
+    if text.endswith(' '):
+        i -= 1
+
+    # Kill trailing punctuation
+    exclude = set(string.punctuation)
+    if text[i-1] in exclude:
         i -= 1
 
     return '&#8220;' + text[:i] + ' ...&#8221;'
