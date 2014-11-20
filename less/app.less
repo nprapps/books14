@@ -61,8 +61,8 @@ nav {
 	ul li:first-child { margin-left: 0; }
 	a, a:link, a:visited { color: #6d8ac4; font-weight: bold; text-transform: lowercase; }
 	a:hover, a:active { color: #bccae5; }
-	.site-links { float: left; margin-left: 30px; }
-	.site-links-2 { float: right; margin-right: 120px; }
+	.site-links { float: left; margin-left: 50px; }
+	.site-links-2 { float: right; margin-right: 35px; }
     .npr { width: 127px; }
 	.npr img { margin: -2px 0 0 0; width: 100%; height: auto; }
 	.stations { padding-left: 22px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG4nAABzrwAA92wAAIZNAABt8wAA6sIAADA+AAAYLjTjngYAAAGBSURBVHjapJO7UQMxEIa/u6GAowO7AptRAeAKODowoSJ8qRXYDhTbJFaIqQB3YMitwVQAHeAOjuQXozkYE7AzmpX2oX38u0XbtgC4EJcA3pqGE9S1KyWcAxPgjb/pDZjIh2K63veAV+DZW3PjQhwCQ2/NphN5DBy8NQcX4hNwBVyUQA1UQONCrIAdMPgl8gDYyaaRT11M1/udahq5ECfAHXChj5dyboCtMr331qxciLvvHgAv4pfA1ltzlHOls5RsK5tvn5J/UplFTr/WWZ1HndSfupMtxXS9nyjdvozfgQ2w6ASbAWPZVbJrShkfszpHwnoGfOrMJBtl/TkCm6Jt2zRIM+A24e9CfM/De2v62Tw8AAtvzbyUcg6sEv4uxBroqeuPQE+yNA8r+XCWRch34Fo8wZhk2+6uFGmZspGtVPdBWQB8AEPgXD34AWNOKdWhoFzonutOfnAnnjKodM91v5fgQuwJ31PU99Z8pMdZRzkWH3lrnju9udKmjoF5kn8NAFaQnhYx4i5jAAAAAElFTkSuQmCC) no-repeat 0% 50%; }
@@ -178,7 +178,7 @@ header {
 		
 		.header-wrapper {
 			width: 100%;
-			padding-left: 240px;
+			padding-left: 250px;
 			padding-right: 50px + @grid-gutter-width;
 		}
 	}
@@ -255,6 +255,7 @@ h1 + #story-meta { margin-top: -11px; }
     @media screen and (min-width: @screen-sm) {
         float: right;
         margin-left: 10px;
+        padding-right: 5px;
     }
 
 	.btn.btn-default {
@@ -1266,7 +1267,7 @@ footer {
         .spacer,
 		.tags-wrapper {
 			width: 200px;
-			padding-left: 16px;
+			padding-left: 20px;
 			text-align: right;
 
 			h4 {
@@ -1311,7 +1312,7 @@ footer {
         .title-area,
 		.books-grid-wrapper {
 			// padding-left: @grid-gutter-width;
-			padding-left: 50px;
+			padding-left: 45px;
 			// width:0%;
 		}
 	}
@@ -1337,7 +1338,7 @@ footer {
 }
 @media (max-width: 767px) {
 	//nav, header, footer { margin-left: -20px; margin-right: -20px; }
-	nav .site-links { margin-left: 20px; }
+	nav .site-links { margin-left: 50px; }
 	footer { 
 		.primary { display: none; }
 		.secondary p { float: left; font-size: 10px; color: #bccae5; }
@@ -1442,5 +1443,10 @@ footer {
       -ms-transition-duration: 0s;
        -o-transition-duration: 0s;
           transition-duration: 0s;
+}
+
+.col-md-12{
+	padding-left:30px;
+	padding-right:30px;
 }
 
