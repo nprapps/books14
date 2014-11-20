@@ -426,7 +426,7 @@ def load_images():
         file_size = os.path.getsize(path)
 
         if file_size < 10000:
-            print "Image not available for ISBN: %s" % book['isbn']
+            print "Image not available for ISBN: %s (%s); size: %s, url: %s" % (book['isbn'], book['title'], file_size, book_url)
 
         image = Image.open(path)
 
