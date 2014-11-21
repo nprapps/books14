@@ -51,7 +51,7 @@
             <div class="title-area">
                 <div class="btn-group btn-group-lg toggle-text grid-active">
                    <button class="grid btn btn-default"><i class="icon-th"></i> Covers</button>
-                   <button class="list btn btn-default"><i class="icon-list-ul"></i> List</button>
+                   <button class="list btn btn-default"><i class="icon-list-bullet"></i> List</button>
                 </div>
                 <div class="current-tag-wrapper">
                     <h3 class="current-tag"><span id="showing-span"></span><span id="tag-span"></span></h3>
@@ -69,7 +69,7 @@
                     <li class="visible-xs mobile-label">{{ COPY.content.filter_by }} <span class="close visible-xs close-modal"aria-hidden="true">&times;</span></li>
 
                         <li>
-                        <button class="btn btn-large btn-info clear-tags hide" data-filter-value="*"><i class="icon icon-remove-circle">&nbsp;&nbsp;</i>{{ COPY.content.clear_filters }}</button>
+                        <button class="btn btn-large btn-info clear-tags hide" data-filter-value="*"><i class="icon-cancel-circled2">&nbsp;&nbsp;</i>{{ COPY.content.clear_filters }}</button>
                         </li>
                     {% for row in COPY.tags %}
                        <li>
@@ -119,8 +119,8 @@
     </div>
 
     <button class="btn" id="back-to-top">
-        <p id="back-to-top-text">Back to top&nbsp;&nbsp;<i class="icon-hand-up"></i></p>
-        <p id="back-to-top-no-text"><i class="icon-hand-up"></i></p>
+        <p id="back-to-top-text">Back to top&nbsp;&nbsp;<i class="icon-hand"></i></p>
+        <p id="back-to-top-no-text"><i class="icon-hand"></i></p>
     </button>
 
 {% endblock %}
