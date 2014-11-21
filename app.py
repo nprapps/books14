@@ -24,6 +24,9 @@ def index():
     # Set up standard page context.
     context = make_context()
 
+    with open('data/featured.json') as f:
+        context['featured'] = json.load(f)
+
     # Read the books JSON into the page.
     with open('www/static-data/books.json', 'rb') as readfile:
         context['books_js'] = readfile.read()
