@@ -672,8 +672,23 @@ li:nth-child(28){
 	}
 }
 
+li:nth-child(29){
+	.tag{
+		.tag-color(spin(@tags, 130));
+	}
+}
+
 .tags-wrapper .tag{
 	width:100%;
+}
+
+.modal-content{
+	.tag{
+		@media screen and (max-width: @screen-sm){
+			font-size:11px;
+			padding: 10px 5px;
+		}
+	}
 }
 
 .tag {
@@ -694,6 +709,7 @@ li:nth-child(28){
 	margin: 4px 0;
 	&:hover{
 		text-decoration:underline;
+		color:white;
 	}
 	
 	&:active,
