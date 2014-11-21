@@ -6,7 +6,7 @@
 <div class="modal-body-wrapper">
     <a class="paddle" href="#/book/<%= previous %>" id="previous-book">
         <% if (previous != null){  %>
-        <span class="icon icon-angle-left"></span>
+        <span class="icon-left-open"></span>
         <% } %>
     </a>
     <div class="modal-body-inner">
@@ -63,7 +63,7 @@
             <div class="social">
                 <p>Share Review:</p>
                 <div class="share-button">
-                    <span class="icon icon-envelope-alt"></span>
+                    <span class="icon icon-mail"></span>
                 </div>
                 
                 <a href="https://twitter.com/share?text=<%= encodeURIComponent(book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank">
@@ -78,7 +78,7 @@
                 </a>
                 <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug + "-thumb.jpg") %>" target="_blank">
                     <div class="share-button">
-                    <span class="icon icon-pinterest"></span>
+                    <span class="icon icon-pinterest-circled"></span>
                     </div>
                 </a>
             </div>
@@ -96,7 +96,7 @@
 
     <a class="paddle" href="#/book/<%= next %>" id="next-book">
         <% if (next != null){  %>
-        <span class="icon icon-angle-right"></span>
+        <span class="icon-right-open"></span>
         <% } %>
     </a>
 </div>
