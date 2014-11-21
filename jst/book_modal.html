@@ -21,7 +21,7 @@
                 <% if(book.genre) { %><p class="genre"><strong><%= COPY.content.genre %> </strong><%= book.genre %></p> <% } %>
 
                 <!-- Tags -->
-                <% if(book.tags.length > 0) { %><p class="tags"><strong><%= COPY.content.tag_list %> </strong><% _.each(book.tags, function(tag, index, list){ %>
+                <% if(book.tags.length > 0) { %><p class="tags"><% _.each(book.tags, function(tag, index, list){ %>
                     <a
                         class="btn btn-large btn-info tag"
                         href="#/tag/<%= tag %>"><%= COPY.tags[tag] %>
