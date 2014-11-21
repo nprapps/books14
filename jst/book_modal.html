@@ -60,17 +60,30 @@
         </div>
 
         <div class="modal-footer">
-            <div class="share-buttons">
+            <div class="social">
                 <p>Share Review:</p>
-                <span class="icon icon-envelope"></span>
+                <div class="share-button">
+                    <span class="icon icon-envelope-alt"></span>
+                </div>
+                
                 <a href="https://twitter.com/share?text=<%= encodeURIComponent(book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank">
-                    <span class="icon icon-twitter-sign"></span>
+                    <div class="share-button">
+                    <span class="icon icon-twitter"></span>
+                    </div>
                 </a>
+                
+                
                 <a href="https://www.facebook.com/dialog/share?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank">
-                    <span class="icon icon-facebook-sign"></span>
+                    <div class="share-button">
+                    <span class="icon icon-facebook"></span>
+                    </div>
                 </a>
+                
+                
                 <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug + "-thumb.jpg") %>" target="_blank">
-                    <span class="icon icon-pinterest-sign"></span>
+                    <div class="share-button">
+                    <span class="icon icon-pinterest"></span>
+                    </div>
                 </a>
             </div>
             <div class="hide book-nav">
