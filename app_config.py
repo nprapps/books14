@@ -149,6 +149,11 @@ def get_secrets():
         'BAKER_TAYLOR_API_PASSWORD',
         'BAKER_TAYLOR_USERID',
         'BAKER_TAYLOR_PASSWORD',
+        'TWITTER_API_OAUTH_TOKEN',
+        'TWITTER_API_OAUTH_SECRET',
+        'TWITTER_API_CONSUMER_KEY',
+        'TWITTER_API_CONSUMER_SECRET',
+        'FACEBOOK_API_APP_TOKEN',
     ]
 
     secrets_dict = {}

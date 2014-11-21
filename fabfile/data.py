@@ -28,9 +28,9 @@ def update():
     """
     Load books and covers
     """
+    update_featured_social()
     load_books()
     load_images()
-    #update_featured_social()
 
 
 @task
