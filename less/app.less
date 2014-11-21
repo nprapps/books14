@@ -976,39 +976,76 @@ li:nth-child(28){
 
 
 
-.share-buttons{
+.social{
 	float:left;
-	@media (max-width: 620px) {
-		float:none;
+	@media (max-width: 767px) {
+		text-align:center;
 		display:block;
+		width: 100%;
+		margin-bottom:20px;
 	}
+	
 	p{
 		display:inline-block;
-	}
-	.icon{
-		display:inline-block;
-		font-size: 20px;
-		color:@red;
 		@media (max-width: 767px) {
-			font-size:30px;
-			margin-right:4px;
-			margin-bottom:20px;
+			display:block;
+		}
+	}
+	.share-button{
+		height:30px;
+		width:30px;
+		// background-color:green;
+		display:inline-block;
+		border:2px solid @red;
+		line-height:30px;
+		text-align: center;
+		border-radius: 50%;
+		@media (max-width: 767px) {
+			height:45px;
+			width:45px;
+			line-height:45px;
+		}
+
+		&:hover{
+			background-color: @red;
+			.icon{
+				color:white;
+			}
+		}
+
+		.icon{
+			display:inline-block;
+			font-size: 15px;
+			color:@red;
+
+			@media (max-width: 767px) {
+				font-size:22px;
+			}
+
+			&:hover{
+				color: white;
+			}
 		}
 	}
 }
 
+
+
 .modal-nav-buttons {
 	margin: 0;
 	color: #333 !important;
+	font-size:10px;
 }
 
 
 #modal-close-btn {
-	color: black;
-	border: solid 1px black;
+	color: @red;
+	border: none;
 	float:right;
 	margin-top:0;
 	margin-left:5px;
+	padding-right:0;
+	padding-left:0;
 }
 
 #modal-close-btn:hover {
@@ -1394,6 +1431,9 @@ footer {
 
 	.book-nav{
 		display:inline-block !important;
+		@media (max-width: 767px) {
+			float:left;
+		}
 	}
 	
 
