@@ -531,10 +531,10 @@
     
     .share-close {
       float: right;
-      font-size: 14px;
+      font-size: 12px;
       line-height: 1;
-      color: #eee;
-      background-color: #000;
+      color: @red;
+      background-color: white;
       border: none;
       text-transform: uppercase;
       margin: 3px 2px 13px 0;
@@ -545,9 +545,9 @@
     
       &:hover,
       &:focus {
-        color: #fff;
         text-decoration: none;
         cursor: pointer;
+        color: lighten(@red, 20%);
       }
     
       button& {
@@ -560,7 +560,7 @@
       
       em {
         font-style: normal;
-        font-size: 10px;
+        font-size: 12px;
       }
     }
 }
