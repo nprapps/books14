@@ -1037,6 +1037,11 @@ li:nth-child(29){
 .social{
 	float:left;
 	@media (max-width: 767px) {
+		display:inline-block;
+		margin-right:20px;
+	}
+
+	@media (max-width: 510px) {
 		text-align:center;
 		display:block;
 		width: 100%;
@@ -1046,6 +1051,9 @@ li:nth-child(29){
 	p{
 		display:inline-block;
 		@media (max-width: 767px) {
+			display:none;
+		}
+		@media (max-width: 510px) {
 			display:block;
 		}
 	}
@@ -1087,12 +1095,22 @@ li:nth-child(29){
 	}
 }
 
-
+.book-nav{
+	@media (max-width: 767px) {
+		display:inline-block !important;
+		margin-right:10px;
+	}
+	@media (max-width: 510px) {
+		float:left;
+	}
+}
 
 .modal-nav-buttons {
 	margin: 0;
 	color: #333 !important;
 	font-size:10px;
+	height:45px;
+	line-height: 27px;
 }
 
 
@@ -1104,6 +1122,8 @@ li:nth-child(29){
 	margin-left:5px;
 	padding-right:0;
 	padding-left:0;
+	line-height: 27px;
+
 }
 
 #modal-close-btn:hover {
@@ -1485,13 +1505,6 @@ footer {
 	.modal-text{
 		margin-left:0;
 		padding-left:0;
-	}
-
-	.book-nav{
-		display:inline-block !important;
-		@media (max-width: 767px) {
-			float:left;
-		}
 	}
 	
 
