@@ -335,11 +335,11 @@ h1 + #story-meta { margin-top: -11px; }
     	width: 25%;
     }
 
-    @media screen and (max-width: 1200px){
+    @media screen and (max-width: 1280px){
     	width: 33.33333%;
     }
 
-    @media screen and (max-width: 900px){
+    @media screen and (max-width: 940px){
     	width: 50%;
     }
 
@@ -371,11 +371,16 @@ h1 + #story-meta { margin-top: -11px; }
             -moz-transition: all 0.5s ease;
             -o-transition: all 0.5s ease;
             transition: all 0.5s ease;
-            font-size: 16px;
             padding: 10px 30px 10px 15px;
             overflow: hidden;
             height: 100%;
             text-indent: -0.5em;
+            font-size: 16px;
+            	&.hover{
+            		@media screen and (max-width: 1280px){
+            			font-size: 13px;
+				    }
+            	}
 
             .reviewer {
                 display: block;
@@ -384,11 +389,20 @@ h1 + #story-meta { margin-top: -11px; }
                 font-size: 14px;
 		        line-height: 18px;
                 text-align: right;
+                &.hover{
+            		@media screen and (max-width: 1280px){
+            			font-size: 13px;
+				    }
+            	}
             }
         }
 
         .review:hover {
         	opacity: 1;
+        	
+        	@media screen and (max-width: @screen-xs-max){
+        		opacity:0;
+        	}
         }
 
         img {
