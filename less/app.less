@@ -713,6 +713,7 @@ li:nth-child(29){
 }
 
 .modal-content{
+	border-radius:0;
 	.tag{
 		@media screen and (max-width: @screen-sm){
 			font-size:11px;
@@ -959,6 +960,10 @@ li:nth-child(29){
 .modal {
 	-webkit-overflow-scrolling: touch;
 }
+
+.modal-backdrop{
+	background-color: darken(@red, 30%);
+}
 .modal-body-wrapper{
   display:table;
   width:100%;
@@ -1054,7 +1059,6 @@ li:nth-child(29){
 }
 
 
-
 .social{
 	float:left;
 	@media (max-width: 767px) {
@@ -1141,9 +1145,14 @@ li:nth-child(29){
 	float:right;
 	margin-top:0;
 	margin-left:5px;
-	padding-right:0;
-	padding-left:0;
 	line-height: 27px;
+	padding:0;
+	margin:0;
+
+	@media (max-width: 767px) {
+		height:45px;
+		line-height: 27px;
+	}
 	
 	&:hover {
 	background-color: transparent;
