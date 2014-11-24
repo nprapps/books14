@@ -64,6 +64,13 @@ a.btn.btn-blue {
 		background-position: auto;
 		-webkit-transition: none; -moz-transition: none; -o-transition: none; transition: none;
 	}
+
+	&:focus{
+		border:none;
+		box-shadow: none;
+		border-radius: none;
+		outline: none;
+	}
 }
 
 .npr { 
@@ -1135,13 +1142,22 @@ li:nth-child(29){
 	padding-right:0;
 	padding-left:0;
 	line-height: 27px;
-
-}
-
-#modal-close-btn:hover {
+	
+	&:hover {
 	background-color: transparent;
 	color: lighten(@red, 20%); 
+	}
+
+	&:focus{
+		border:none;
+		box-shadow: none;
+		border-radius: none;
+		outline: none;
+	}
+
 }
+
+
 
 //Styling for tags and links inside modal
 .book-modal-links {
