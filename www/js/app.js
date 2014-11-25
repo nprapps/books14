@@ -428,6 +428,26 @@ var toggle_books_list = function() {
     }
 };
 
+var on_next = function() {
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'navigate', 'next']);
+}
+
+var on_previous = function() {
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'navigate', 'previous']);
+}
+
+var on_keypress = function (e) {
+    if ($('#myModal:visible').length > 0){
+        if (e.which === 37 && previous !== null) {
+            on_previous();
+            hasher.setHash('book', previous);
+        } else if (e.which === 39 && next !== null) {
+            on_next();
+            hasher.setHash('book', next);
+        }
+    }
+}
+
 $(function() {
 
     // Set up the global variables.
@@ -459,15 +479,9 @@ $(function() {
     $filter.find('.close-modal').on('click', toggle_filter_modal);
     $toggle_text.on('click', toggle_books_list);
     $(window).on('scroll', on_page_scroll);
-    $modal.keyup(function (e) {
-        if ($('#myModal:visible').length > 0){
-           if (e.which === 37 && previous !== null) {
-            hasher.setHash('book', previous);
-            } else if (e.which === 39 && next !== null) {
-                hasher.setHash('book', next);
-            }
-        }
-    });
+    $modal.keyup(on_keypress);
+    $modal.on('click', '#previous-book', on_previous);
+    $modal.on('click', '#next-book', on_next);
 
     // Set up the page.
     $back_to_top.hide();
