@@ -419,8 +419,6 @@ var toggle_filter_modal = function() {
 var toggle_books_list = function() {
     $books_grid.toggle();
     $books_list.toggle();
-    // $show_text_button.toggle();
-    // $show_books_button.toggle();
     $toggle_text.toggleClass('grid-active list-active');
 
     if ($books_grid.is(':visible')) {
