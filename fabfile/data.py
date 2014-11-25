@@ -5,13 +5,19 @@
 Commands that update or process the application data.
 """
 import app_config
+import codecs
 import copytext
 import csv
 import json
+import locale
 import os
 import re
 import requests
+import sys
 import xlrd
+
+# Wrap sys.stdout into a StreamWriter to allow writing unicode. See http://stackoverflow.com/a/4546129
+sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
 
 from PIL import Image
 from bs4 import BeautifulSoup
@@ -203,105 +209,113 @@ class Book(object):
         """
         return self.title
 
-    def __init__(self, **kwargs):
+    def _process_text(self, value):
         """
-        Cleans the ID fields coming back from the spreadsheet.
-        Removes non-integer junk from the cells.
-        Serializes based on commas.
+        Clean text field by replacing smart quotes and removing extra spaces
         """
-        print 'Processing %s (http://www.npr.org/%s)' % (kwargs['title'], kwargs['book_seamus_id'])
-        for key, value in kwargs.items():
+        value = value.replace('“','"').replace('”','"')
+        value = value.replace('’', "'")
+        value = value.strip()
+        return unicode(value.decode('utf8'))
 
-            # Kill smart quotes in fields
-            value = value.replace('“','"').replace('”','"')
-            value = value.replace('’', "'")
+    def _process_tags(self, value):
+        """
+        Turn comma separated string of tags into list
+        """
+        item_list = []
 
-            # Handle wacky characters.
-            value = unicode(value.decode('utf-8')).strip()
+        for item in value.split(','):
+            if item != '':
+                # Clean.
+                item = self._process_text(item).replace(' and ', ' & ')
 
-            if key == 'text':
-                if value == '' or value == None:
-                    print 'ERROR (%s): Missing review' % kwargs['title']
+                # Look up from our map.
+                tag_slug = TAGS_TO_SLUGS.get(item.lower(), None)
 
-            # Look up coverage
-            if key == 'book_seamus_id' and value:
-                r = requests.get('http://www.npr.org/%s' % value)
-                soup = BeautifulSoup(r.content)
-                items = soup.select('.storylist article')
-                item_list = []
-                if len(items):
-                    for item in items:
-                        link = {
-                            'category': '',
-                            'title': item.select('.title')[0].text.strip(),
-                            'url': item.select('a')[0].attrs.get('href'),
-                        }
-                        category_elements = item.select('.slug')
-                        if len(category_elements):
-                            link['category'] = category_elements[0].text.strip()
-                        item_list.append(link)
-                        print 'LOG (%s): Adding link %s - %s (%s)' % (kwargs['title'], link['category'], link['title'], link['url'])
-
+                # Append if the tag exists.
+                if tag_slug:
+                    item_list.append(tag_slug)
                 else:
-                    print 'LOG (%s): No links found' % kwargs['title']
-                    setattr(self, 'links', item_list)
-            elif key == 'book_seamus_id' and not value:
-                print 'ERROR (%s): No seamus book id' % kwargs['title']
+                    print u'ERROR (%s): Unknown tag "%s"' % (self.title, item)
 
+        return item_list
 
-            if key == 'isbn':
-                value = value.zfill(10)
-
-            if key == 'tags':
-                # Build the empty list, since each can have more than one.
-                item_list = []
-
-                # Split on commas.
-                for item in value.split(','):
-
-                    # If it's not blank, add to the list.
-                    # Returning an empty list is better than a blank
-                    # string inside the list.
-                    if item != u"":
-
-                        # Clean.
-                        item = item.strip().replace(' and ', ' & ')
-
-                        # Look up from our map.
-                        tag_slug = TAGS_TO_SLUGS.get(item.lower(), None)
-
-                        # Append if the tag exists.
-                        if tag_slug:
-                            item_list.append(tag_slug)
-                        else:
-                            print "ERROR (%s): Unknown tag '%s'" % (kwargs['title'], item)
-
-                # Set the attribute with the corrected value, which is a list.
-                setattr(self, key, item_list)
+    def _process_links(self, value):
+        """
+        Get links for a book from NPR.org book page
+        """
+        url = 'http://www.npr.org/%s' % value
+        print 'LOG (%s): Getting links from %s' % (self.title, url)
+        r = requests.get(url)
+        soup = BeautifulSoup(r.content)
+        items = soup.select('.storylist article')
+        item_list = []
+        urls = []
+        for item in items:
+            link = {
+                'category': '',
+                'title': item.select('.title')[0].text.strip(),
+                'url': item.select('a')[0].attrs.get('href'),
+            }
+            if link['url'] not in urls:
+                category_elements = item.select('.slug')
+                if len(category_elements):
+                    link['category'] = category_elements[0].text.strip()
+                urls.append(link['url'])
+                item_list.append(link)
+                print u'LOG (%s): Adding link %s - %s (%s)' % (self.title, link['category'], link['title'], link['url'])
             else:
-                # Don't modify the value for stuff that isn't in the list above.
-                setattr(self, key, value)
+                print u'ERROR (%s): Duplicate link %s on %s' % (self.title, link['title'], link['url'])
 
-        # Calculate ISBN-13, see: http://www.ehow.com/how_5928497_convert-10-digit-isbn-13.html
-        if self.isbn.startswith('978'):
-            self.isbn13 = self.isbn
-            print 'LOG (%s): ISBN already 13 digits (%s)' % (kwargs['title'], self.isbn)
+        return item_list
+
+    def _process_isbn13(self, value):
+        """
+        Calculate ISBN-13, see: http://www.ehow.com/how_5928497_convert-10-digit-isbn-13.html
+        """
+        if value.startswith('978'):
+            return value
         else:
-            isbn = '978%s' % self.isbn[:9]
+            isbn = '978%s' % value[:9]
             sum_even = 3 * sum(map(int, [isbn[1], isbn[3], isbn[5], isbn[7], isbn[9], isbn[11]]))
             sum_odd = sum(map(int, [isbn[0], isbn[2], isbn[4], isbn[6], isbn[8], isbn[10]]))
             remainder = (sum_even + sum_odd) % 10
             check = 10 - remainder if remainder else 0
-            self.isbn13 = '%s%s' % (isbn, check)
-            print 'LOG (%s): Converted ISBN-10 (%s) to ISBN-13 (%s)' % (kwargs['title'], self.isbn, self.isbn13)
+            isbn13 = '%s%s' % (isbn, check)
+            return isbn13
 
-        # Slugify.
-        slug = self.title.lower()
+    def _slugify(self, value):
+        """
+        Slugify book title
+        """
+        slug = value.lower()
         slug = re.sub(r"[^\w\s]", '', slug)
         slug = re.sub(r"\s+", '-', slug)
-        self.slug = slug[:254]
+        slug = slug[:254]
+        return value
 
-        print ''
+    def __init__(self, **kwargs):
+        """
+        Process all fields for row in the spreadsheet for serialization
+        """
+        self.title = self._process_text(kwargs['title'])
+        print u'Processing %s' % self.title
+        self.book_seamus_id = kwargs['book_seamus_id']
+        self.slug = self._slugify(kwargs['title'])
+
+        self.author = self._process_text(kwargs['author'])
+        self.hide_ibooks = kwargs['hide_ibooks']
+        self.text = self._process_text(kwargs['text'])
+
+        self.isbn = self._process_text(kwargs['isbn'])
+        if self.isbn:
+            self.isbn13 = self._process_isbn13(self.isbn)
+        else:
+            print u'ERROR (%s): No ISBN' % self.title
+
+        self.links = self._process_links(kwargs['book_seamus_id'])
+        self.tags = self._process_tags(kwargs['tags'])
+
 
 def get_books_csv():
     """
