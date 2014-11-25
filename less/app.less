@@ -393,7 +393,7 @@ h1 + #story-meta { margin-top: -11px; }
             -moz-transition: all 0.5s ease;
             -o-transition: all 0.5s ease;
             transition: all 0.5s ease;
-            padding: 10px 30px 10px 15px;
+            padding: 10px 15px 10px 15px;
             overflow: hidden;
             height: 100%;
             text-indent: -0.5em;
@@ -415,6 +415,14 @@ h1 + #story-meta { margin-top: -11px; }
             		@media screen and (max-width: 1280px){
             			font-size: 13px;
 				    }
+            	}
+            	&:hover{
+            		color:@red;
+            	}
+            	.arrow{
+            		font-size: 30px;
+            		font-size: 60px;
+            		vertical-align:text-top;
             	}
             }
         }
@@ -567,150 +575,254 @@ h1 + #story-meta { margin-top: -11px; }
 @tags: #4cc6ad;
 
 
-// .gradient(@n){
-// 	.tag-color(spin(@tags, @n * 5 - 15));
+// li:nth-child(3)>.tag, .tags>a:nth-child(1){
+// 		.tag-color(@tags);
 // }
 
-li:nth-child(3)>.tag, .tags>a:nth-child(1){
+// li:nth-child(4)>.tag, .tags>a:nth-child(2){
+// 		.tag-color(spin(@tags, 5));
+// }
+
+// li:nth-child(5)>.tag, .tags>a:nth-child(3){
+// 		.tag-color(spin(@tags, 10));
+// }
+
+// li:nth-child(6)>.tag, .tags>a:nth-child(4){
+// 		.tag-color(spin(@tags, 15));
+// }
+
+// li:nth-child(7)>.tag, .tags>a:nth-child(5){
+// 		.tag-color(spin(@tags, 20));
+// }
+
+// li:nth-child(8)>.tag, .tags>a:nth-child(6){
+// 		.tag-color(spin(@tags, 25));
+// }
+
+// li:nth-child(9)>.tag, .tags>a:nth-child(7){
+// 		.tag-color(spin(@tags, 30));
+// }
+
+// li:nth-child(10)>.tag, .tags>a:nth-child(8){
+// 		.tag-color(spin(@tags, 35));
+// }
+
+// li:nth-child(11)>.tag, .tags>a:nth-child(9){
+// 		.tag-color(spin(@tags, 40));
+// }
+
+// li:nth-child(12)>.tag, .tags>a:nth-child(10){
+// 		.tag-color(spin(@tags, 45));
+// }
+
+// li:nth-child(13){
+// 	.tag{
+// 		.tag-color(spin(@tags, 50));
+// 	}
+// }
+
+// li:nth-child(14){
+// 	.tag{
+// 		.tag-color(spin(@tags, 55));
+// 	}
+// }
+
+// li:nth-child(15){
+// 	.tag{
+// 		.tag-color(spin(@tags, 60));
+// 	}
+// }
+
+// li:nth-child(16){
+// 	.tag{
+// 		.tag-color(spin(@tags, 65));
+// 	}
+// }
+
+// li:nth-child(17){
+// 	.tag{
+// 		.tag-color(spin(@tags, 70));
+// 	}
+// }
+
+// li:nth-child(18){
+// 	.tag{
+// 		.tag-color(spin(@tags, 75));
+// 	}
+// }
+
+// li:nth-child(19){
+// 	.tag{
+// 		.tag-color(spin(@tags, 80));
+// 	}
+// }
+
+// li:nth-child(20){
+// 	.tag{
+// 		.tag-color(spin(@tags, 85));
+// 	}
+// }
+
+// li:nth-child(21){
+// 	.tag{
+// 		.tag-color(spin(@tags, 90));
+// 	}
+// }
+
+// li:nth-child(22){
+// 	.tag{
+// 		.tag-color(spin(@tags, 95));
+// 	}
+// }
+
+// li:nth-child(23){
+// 	.tag{
+// 		.tag-color(spin(@tags, 100));
+// 	}
+// }
+
+// li:nth-child(24){
+// 	.tag{
+// 		.tag-color(spin(@tags, 105));
+// 	}
+// }
+
+// li:nth-child(25){
+// 	.tag{
+// 		.tag-color(spin(@tags, 110));
+// 	}
+// }
+
+// li:nth-child(26){
+// 	.tag{
+// 		.tag-color(spin(@tags, 115));
+// 	}
+// }
+
+// li:nth-child(27){
+// 	.tag{
+// 		.tag-color(spin(@tags, 120));
+// 	}
+// }
+
+// li:nth-child(28){
+// 	.tag{
+// 		.tag-color(spin(@tags, 125));
+// 	}
+// }
+
+// li:nth-child(29){
+// 	.tag{
+// 		.tag-color(spin(@tags, 130));
+// 	}
+// }
+
+.npr-staff-picks.tag{
 		.tag-color(@tags);
 }
 
-li:nth-child(4)>.tag, .tags>a:nth-child(2){
+.biography-and-memoir.tag{
 		.tag-color(spin(@tags, 5));
 }
 
-li:nth-child(5)>.tag, .tags>a:nth-child(3){
+.book-club-ideas.tag{
 		.tag-color(spin(@tags, 10));
 }
 
-li:nth-child(6)>.tag, .tags>a:nth-child(4){
+.comics-and-graphic-novels.tag{
 		.tag-color(spin(@tags, 15));
 }
 
-li:nth-child(7)>.tag, .tags>a:nth-child(5){
+.cookbooks-and-food.tag{
 		.tag-color(spin(@tags, 20));
 }
 
-li:nth-child(8)>.tag, .tags>a:nth-child(6){
+.eye-opening-reads.tag{
 		.tag-color(spin(@tags, 25));
 }
 
-li:nth-child(9)>.tag, .tags>a:nth-child(7){
+.family-matters.tag{
 		.tag-color(spin(@tags, 30));
 }
 
-li:nth-child(10)>.tag, .tags>a:nth-child(8){
+.for-art-lovers.tag{
 		.tag-color(spin(@tags, 35));
 }
 
-li:nth-child(11)>.tag, .tags>a:nth-child(9){
+.for-history-lovers.tag{
 		.tag-color(spin(@tags, 40));
 }
 
-li:nth-child(12)>.tag, .tags>a:nth-child(10){
+.for-music-lovers.tag{
 		.tag-color(spin(@tags, 45));
 }
 
-li:nth-child(13){
-	.tag{
+.funny-stuff.tag{
 		.tag-color(spin(@tags, 50));
-	}
 }
 
-li:nth-child(14){
-	.tag{
+.historical-fiction.tag{
 		.tag-color(spin(@tags, 55));
-	}
 }
 
-li:nth-child(15){
-	.tag{
+.its-all-geek-to-me.tag{
 		.tag-color(spin(@tags, 60));
-	}
 }
 
-li:nth-child(16){
-	.tag{
+.kids-books.tag{
 		.tag-color(spin(@tags, 65));
-	}
 }
 
-li:nth-child(17){
-	.tag{
+.lets-talk-about-sex.tag{
 		.tag-color(spin(@tags, 70));
-	}
 }
 
-li:nth-child(18){
-	.tag{
+.love-stories.tag{
 		.tag-color(spin(@tags, 75));
-	}
 }
 
-li:nth-child(19){
-	.tag{
+.mysteries-and-thrillers.tag{
 		.tag-color(spin(@tags, 80));
-	}
 }
 
-li:nth-child(20){
-	.tag{
+.poetry.tag{
 		.tag-color(spin(@tags, 85));
-	}
 }
 
-li:nth-child(21){
-	.tag{
+.rather-long.tag{
 		.tag-color(spin(@tags, 90));
-	}
 }
 
-li:nth-child(22){
-	.tag{
+.rather-short.tag{
 		.tag-color(spin(@tags, 95));
-	}
 }
 
-li:nth-child(23){
-	.tag{
+.realistic-fiction.tag{
 		.tag-color(spin(@tags, 100));
-	}
 }
 
-li:nth-child(24){
-	.tag{
+.science-and-society.tag{
 		.tag-color(spin(@tags, 105));
-	}
 }
 
-li:nth-child(25){
-	.tag{
+.science-fiction-and-fantasy.tag{
 		.tag-color(spin(@tags, 110));
-	}
 }
 
-li:nth-child(26){
-	.tag{
+.seriously-great-writing.tag{
 		.tag-color(spin(@tags, 115));
-	}
 }
 
-li:nth-child(27){
-	.tag{
+.tales-from-around-the-world.tag{
 		.tag-color(spin(@tags, 120));
-	}
 }
 
-li:nth-child(28){
-	.tag{
+.the-dark-side.tag{
 		.tag-color(spin(@tags, 125));
-	}
 }
 
-li:nth-child(29){
-	.tag{
+.young-adult.tag{
 		.tag-color(spin(@tags, 130));
-	}
 }
 
 .tags-wrapper .tag{
