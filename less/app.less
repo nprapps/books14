@@ -42,7 +42,8 @@ a:hover {
     text-decoration: none; 
 }
 .btn.btn-blue, 
-a.btn.btn-blue {
+a.btn.btn-blue, 
+{
 	background: none;
 	background-color: #7598c9;
 	border: none;
@@ -71,6 +72,10 @@ a.btn.btn-blue {
 		border-radius: none;
 		outline: none;
 	}
+}
+
+:focus, .btn:focus{
+	outline:none;
 }
 
 .npr { 
@@ -1272,7 +1277,7 @@ footer {
 		li { 
 		    line-height: 52px; 
 		    font-size: 12px; 
-		    margin-left: 15px;
+		    margin-left: 10px;
 		}
 		a { 
 		    color: #999; 
@@ -1546,9 +1551,9 @@ footer {
 	// nav .site-links { margin-left: 50px; }
 	footer { 
 		.primary { display: none; }
-		.secondary p { float: left; font-size: 10px; color: #bccae5; }
+		.secondary p { float: left; font-size: 9px; color: #bccae5; }
 		.secondary ul { float: right; }
-		.secondary li { font-size: 10px; text-transform: none; }
+		.secondary li { font-size: 9px; text-transform: none; }
 		.secondary a { color: #bccae5; }
 	}
 	.modal-book-cover img{
