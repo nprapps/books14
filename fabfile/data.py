@@ -221,7 +221,7 @@ class Book(object):
 
             if key == 'text':
                 if value == '' or value == None:
-                    print 'ERROR: Missing review for %s.' % kwargs['title']
+                    print 'ERROR (%s): Missing review' % kwargs['title']
 
             # Look up coverage
             if key == 'book_seamus_id' and value:
@@ -240,13 +240,13 @@ class Book(object):
                         if len(category_elements):
                             link['category'] = category_elements[0].text.strip()
                         item_list.append(link)
-                        print 'LOG: Adding link: %(category)s: %(title)s (%(url)s)' % link
+                        print 'LOG (%s): Adding link %s - %s (%s)' % (kwargs['title'], link['category'], link['title'], link['url'])
 
                 else:
-                    print 'LOG: No links found for %s' % kwargs['title']
+                    print 'LOG (%s): No links found' % kwargs['title']
                     setattr(self, 'links', item_list)
             elif key == 'book_seamus_id' and not value:
-                print 'ERROR: No seamus book id for %s' % kwargs['title']
+                print 'ERROR (%s): No seamus book id' % kwargs['title']
 
 
             if key == 'isbn':
@@ -274,7 +274,7 @@ class Book(object):
                         if tag_slug:
                             item_list.append(tag_slug)
                         else:
-                            print "ERROR: Unknown tag: '%s'" % item
+                            print "ERROR (%s): Unknown tag '%s'" % (kwargs['title'], item)
 
                 # Set the attribute with the corrected value, which is a list.
                 setattr(self, key, item_list)
@@ -285,7 +285,7 @@ class Book(object):
         # Calculate ISBN-13, see: http://www.ehow.com/how_5928497_convert-10-digit-isbn-13.html
         if self.isbn.startswith('978'):
             self.isbn13 = self.isbn
-            print 'ISBN already 13 digits (%s)' % self.isbn
+            print 'LOG (%s): ISBN already 13 digits (%s)' % (kwargs['title'], self.isbn)
         else:
             isbn = '978%s' % self.isbn[:9]
             sum_even = 3 * sum(map(int, [isbn[1], isbn[3], isbn[5], isbn[7], isbn[9], isbn[11]]))
@@ -293,7 +293,7 @@ class Book(object):
             remainder = (sum_even + sum_odd) % 10
             check = 10 - remainder if remainder else 0
             self.isbn13 = '%s%s' % (isbn, check)
-            print 'LOG: Converted ISBN-10 (%s) to ISBN-13 (%s)' % (self.isbn, self.isbn13)
+            print 'LOG (%s): Converted ISBN-10 (%s) to ISBN-13 (%s)' % (kwargs['title'], self.isbn, self.isbn13)
 
         # Slugify.
         slug = self.title.lower()
@@ -423,7 +423,7 @@ def load_images():
         file_size = os.path.getsize(path)
 
         if file_size < 10000:
-            print "Image not available for ISBN: %s (%s); size: %s, url: %s" % (book['isbn'], book['title'], file_size, book_url)
+            print "ERROR (%s): Image not available for ISBN %s" % (book['title'], book['isbn'])
 
         image = Image.open(path)
 
