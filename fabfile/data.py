@@ -209,6 +209,29 @@ class Book(object):
         """
         return self.title
 
+    def __init__(self, **kwargs):
+        """
+        Process all fields for row in the spreadsheet for serialization
+        """
+        self.title = self._process_text(kwargs['title'])
+        print u'Processing %s' % self.title
+        self.book_seamus_id = kwargs['book_seamus_id']
+        self.slug = self._slugify(kwargs['title'])
+
+        self.author = self._process_text(kwargs['author'])
+        self.hide_ibooks = kwargs['hide_ibooks']
+        self.text = self._process_text(kwargs['text'])
+        self.reviewer = self._process_text(kwargs['reviewer'])
+
+        self.isbn = self._process_text(kwargs['isbn'])
+        if self.isbn:
+            self.isbn13 = self._process_isbn13(self.isbn)
+        else:
+            print u'ERROR (%s): No ISBN' % self.title
+
+        self.links = self._process_links(kwargs['book_seamus_id'])
+        self.tags = self._process_tags(kwargs['tags'])
+
     def _process_text(self, value):
         """
         Clean text field by replacing smart quotes and removing extra spaces
@@ -260,7 +283,12 @@ class Book(object):
             if link['url'] not in urls:
                 category_elements = item.select('.slug')
                 if len(category_elements):
-                    link['category'] = category_elements[0].text.strip()
+                    category = category_elements[0].text.strip()
+                    if category in app_config.LINK_CATEGORY_MAP.keys():
+                        link['category'] = app_config.LINK_CATEGORY_MAP.get(category)
+                    else:
+                        link['category'] = app_config.LINK_CATEGORY_DEFAULT
+
                 urls.append(link['url'])
                 item_list.append(link)
                 print u'LOG (%s): Adding link %s - %s (%s)' % (self.title, link['category'], link['title'], link['url'])
@@ -293,29 +321,6 @@ class Book(object):
         slug = re.sub(r"\s+", '-', slug)
         slug = slug[:254]
         return slug
-
-    def __init__(self, **kwargs):
-        """
-        Process all fields for row in the spreadsheet for serialization
-        """
-        self.title = self._process_text(kwargs['title'])
-        print u'Processing %s' % self.title
-        self.book_seamus_id = kwargs['book_seamus_id']
-        self.slug = self._slugify(kwargs['title'])
-
-        self.author = self._process_text(kwargs['author'])
-        self.hide_ibooks = kwargs['hide_ibooks']
-        self.text = self._process_text(kwargs['text'])
-        self.reviewer = self._process_text(kwargs['reviewer'])
-
-        self.isbn = self._process_text(kwargs['isbn'])
-        if self.isbn:
-            self.isbn13 = self._process_isbn13(self.isbn)
-        else:
-            print u'ERROR (%s): No ISBN' % self.title
-
-        self.links = self._process_links(kwargs['book_seamus_id'])
-        self.tags = self._process_tags(kwargs['tags'])
 
 
 def get_books_csv():

@@ -103,11 +103,13 @@ COPY_PATH = 'data/copy.xlsx'
 """
 DATA
 """
-# 2013
-#DATA_GOOGLE_DOC_KEY = '0AlPD88PpyGPUdExyUWV1Z2ZleVl6cGpJa0tOQkMzZnc'
-
-# 2014
 DATA_GOOGLE_DOC_KEY = '0AvlX2ijdYanwdGVlbS1adk5mbmdTNDR2MVA3RS1HMXc'
+
+LINK_CATEGORY_MAP = {
+    'Author Interviews': 'Interview',
+    'Book Reviews': 'Review',
+}
+LINK_CATEGORY_DEFAULT = 'Feature'
 
 """
 SHARING

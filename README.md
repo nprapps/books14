@@ -367,4 +367,6 @@ The Google Analytics events tracked in this application are:
 |books14|featured-tweet-action|`action`||``tweet_url``|
 |books14|featured-facebook-action|`action`||``post_url``|
 |books14|view-review|`book_slug`||||
+|books14|navigate|`next` or `previous`||||
+|books14|toggle-view|`list` or `grid`||||
 
