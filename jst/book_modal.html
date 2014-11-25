@@ -23,7 +23,7 @@
                 <!-- Tags -->
                 <% if(book.tags.length > 0) { %><p class="tags"><% _.each(book.tags, function(tag, index, list){ %>
                     <a
-                        class="btn btn-large btn-info tag <% row.key %>"
+                        class="btn btn-large btn-info tag"
                         href="#/tag/<%= tag %>"><%= COPY.tags[tag] %>
                     </a>
                 <% }); %></p> <% } %>
