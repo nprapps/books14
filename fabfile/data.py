@@ -292,7 +292,7 @@ class Book(object):
         slug = re.sub(r"[^\w\s]", '', slug)
         slug = re.sub(r"\s+", '-', slug)
         slug = slug[:254]
-        return value
+        return slug
 
     def __init__(self, **kwargs):
         """
