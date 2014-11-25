@@ -422,7 +422,10 @@ var toggle_books_list = function() {
     $toggle_text.toggleClass('grid-active list-active');
 
     if ($books_grid.is(':visible')) {
+        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'toggle-view', 'grid']);
         isotope_grid();
+    } else {
+        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'toggle-view', 'list']);
     }
 };
 
