@@ -1,16 +1,3 @@
-// add/remove classes to hide/revealing items
-var itemReveal = Isotope.Item.prototype.reveal;
-Isotope.Item.prototype.reveal = function() {
-  itemReveal.apply( this, arguments );
-  $( this.element ).removeClass('isotope-hidden');
-};
-
-var itemHide = Isotope.Item.prototype.hide;
-Isotope.Item.prototype.hide = function() {
-  itemHide.apply( this, arguments );
-  $( this.element ).addClass('isotope-hidden');
-};
-
 var MOBILE = Modernizr.touch;
 var SMALL = Modernizr.mq('only all and (max-width: 480px)');
 
@@ -270,10 +257,10 @@ var on_book_hash = function(slug) {
             $last = $books_grid.find('.book').last();
         } else {
             // Next and previous are based on hidden/not hidden isotope elements.
-            next = grid_item.nextAll(':not(.isotope-hidden)').first();
-            previous = grid_item.prevAll('.book:not(.isotope-hidden)').first();
-            $first = $books_grid.find('.book:not(.isotope-hidden)').first();
-            $last = $books_grid.find('.book:not(.isotope-hidden)').last();
+            next = grid_item.nextAll(':visible').first();
+            previous = grid_item.prevAll(':visible').first();
+            $first = $books_grid.find(':visible').first();
+            $last = $books_grid.find(':visible').last();
         }
 
 
@@ -399,7 +386,6 @@ var relayout = _.throttle(function() {
  */
 var unveil_grid = function() {
     $books_grid.find('img').unveil(500, function() {
-        $(this).parents('.isotope-item').removeClass('isotope-hidden');
         $(this).imagesLoaded(function() {
             relayout();
         });
