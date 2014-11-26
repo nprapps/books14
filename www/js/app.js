@@ -263,17 +263,17 @@ var on_book_hash = function(slug) {
         grid_item = $('#' + book.slug);
 
         if ($books_grid.hasClass('filter-inactive')) {
-          // Next and previous are based on whole list of books.
-          next = grid_item.next();
-          previous = grid_item.prev();
-          $first = $books_grid.find('.book').first();
-          $last = $books_grid.find('.book').last();
+            // Next and previous are based on whole list of books.
+            next = grid_item.next();
+            previous = grid_item.prev();
+            $first = $books_grid.find('.book').first();
+            $last = $books_grid.find('.book').last();
         } else {
-          // Next and previous are based on hidden/not hidden isotope elements.
-          next = grid_item.nextAll(':not(.isotope-hidden)').first();
-          previous = grid_item.prevAll('.book:not(.isotope-hidden)').first();
-          $first = $books_grid.find('.book:not(.isotope-hidden)').first();
-          $last = $books_grid.find('.book:not(.isotope-hidden)').last();
+            // Next and previous are based on hidden/not hidden isotope elements.
+            next = grid_item.nextAll(':not(.isotope-hidden)').first();
+            previous = grid_item.prevAll('.book:not(.isotope-hidden)').first();
+            $first = $books_grid.find('.book:not(.isotope-hidden)').first();
+            $last = $books_grid.find('.book:not(.isotope-hidden)').last();
         }
 
 
