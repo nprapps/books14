@@ -30,7 +30,7 @@
 
                 <!-- Book Description/Review -->
                 <% if(book.text) { %><p class="text"><%= book.text %></p> <% } %>
-                <% if(book.reviewer) { %><p class="reviewer">&mdash; <%= COPY.content.recommended_by %> <strong><% if (book['reviewer link']) { %><a href="<%= book['reviewer link'] %>" target="_blank"><%= book.reviewer %></a><% } else { %><%= book.reviewer %><% } %></strong><% if (book['reviewer ID']) { %>, <%= book['reviewer ID'] %><% } %></p> <% } %>
+                <% if(book.reviewer) { %><p class="reviewer">&mdash; <%= COPY.content.recommended_by %> <strong><% if (book['reviewer_link']) { %><a href="<%= book['reviewer_link'] %>" target="_blank"><%= book.reviewer %></a><% } else { %><%= book.reviewer %><% } %></strong><% if (book['reviewer_id']) { %>, <%= book['reviewer_id'] %><% } %></p> <% } %>
 
                 <!-- Purchase/Related Links -->
 

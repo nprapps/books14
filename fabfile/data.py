@@ -222,6 +222,8 @@ class Book(object):
         self.hide_ibooks = kwargs['hide_ibooks']
         self.text = self._process_text(kwargs['text'])
         self.reviewer = self._process_text(kwargs['reviewer'])
+        self.reviewer_id = self._process_text(kwargs['reviewer ID'])
+        self.reviewer_link = self._process_text(kwargs['reviewer link'])
 
         self.isbn = self._process_text(kwargs['isbn'])
         if self.isbn:
