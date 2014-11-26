@@ -161,33 +161,13 @@ def update():
     assets.sync()
 
 @task
-def deploy(remote='origin'):
+def deploy(quick=False):
     """
-    Deploy the latest app to S3 and, if configured, to our servers.
+    Deploy the latest app to S3
     """
     require('settings', provided_by=[production, staging])
-
-    if app_config.DEPLOY_TO_SERVERS:
-        require('branch', provided_by=[stable, master, branch])
-
-        if (app_config.DEPLOYMENT_TARGET == 'production' and env.branch != 'stable'):
-            utils.confirm(
-                colored("You are trying to deploy the '%s' branch to production.\nYou should really only deploy a stable branch.\nDo you know what you're doing?" % env.branch, "red")
-            )
-
-        servers.checkout_latest(remote)
-
-        servers.fabcast('text.update')
-        servers.fabcast('assets.sync')
-        servers.fabcast('data.update')
-
-        if app_config.DEPLOY_CRONTAB:
-            servers.install_crontab()
-
-        if app_config.DEPLOY_SERVICES:
-            servers.deploy_confs()
-
-    update()
+    if not quick == 'quick':
+        update()
     render.render_all()
     _gzip('www', '.gzip')
     _deploy_to_s3()
