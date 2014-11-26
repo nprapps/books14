@@ -45,6 +45,30 @@ def index():
 
     return render_template('index.html', **context)
 
+@app.route('/seamus')
+def seamus():
+    """
+    Preview for Seamus page
+    """
+    context = make_context()
+
+    # Read the books JSON into the page.
+    with open('www/static-data/books.json', 'rb') as readfile:
+        books_data = json.load(readfile)
+        books = sorted(books_data, key=lambda k: k['title'])
+
+    # Harvest long tag names
+    for book in books:
+        tag_list = []
+        for tag in book['tags']:
+            tag_list.append(context['COPY']['tags'][tag]['value'])
+        book['tag_list'] = tag_list
+
+    context['books'] = books
+
+    return render_template('seamus-preview.html', **context)
+
+
 def _make_teaser(book):
     """
     Calculate a teaser
