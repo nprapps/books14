@@ -263,7 +263,18 @@ class Book(object):
                 else:
                     print u'ERROR (%s): Unknown tag "%s"' % (self.title, item)
 
-        return item_list
+        # Sort items by order in spreadsheet
+        copy = copytext.Copy(app_config.COPY_PATH)
+
+        ordered_items = []
+        slugs = [tag['key'].__str__() for tag in copy['tags']]
+
+        # Add slugs to new list in order from tags spreadsheet, not input order
+        for slug in slugs:
+            if slug in item_list:
+                ordered_items.append(slug)
+
+        return ordered_items
 
     def _process_links(self, value):
         """
