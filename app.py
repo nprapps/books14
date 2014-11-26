@@ -76,7 +76,7 @@ def _make_teaser(book):
     tag_stripper = re.compile(r'<.*?>')
 
     try:
-        img = Image.open('www/assets/cover/%s-thumb.jpg' % book['slug'])
+        img = Image.open('www/assets/cover/%s.jpg' % book['slug'])
         width, height = img.size
 
         # Poor man's packing algorithm. How much text will fit?

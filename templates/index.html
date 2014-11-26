@@ -96,7 +96,7 @@
                             {% if book.teaser %}
                             <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong><br /> full recommendation <br><span class="arrow"> &#10165; </span></div></div>
                             {% endif %}
-                            <img src="assets/img/cover-loading.gif" data-src="assets/cover/{{ book.slug }}-thumb.jpg" alt="{{ book.title }}"/>
+                            <img src="assets/img/cover-loading.gif" data-src="assets/cover/{{ book.slug }}.jpg" alt="{{ book.title }}"/>
                         </div>
                         </a>
                     </div>

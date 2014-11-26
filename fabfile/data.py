@@ -472,10 +472,4 @@ def load_images():
         image = Image.open(path)
         image.save(path, optimize=True, quality=75)
 
-        width = 250
-        height = int((float(width) / image.size[0]) * image.size[1])
-
-        image.thumbnail([width, height], Image.ANTIALIAS)
-        image.save(path.replace('.jpg', '-thumb.jpg'), 'JPEG')
-
     print "End."
