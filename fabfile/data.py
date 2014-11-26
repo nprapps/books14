@@ -318,7 +318,7 @@ class Book(object):
         """
         Slugify book title
         """
-        slug = value.lower()
+        slug = value.strip().lower()
         slug = re.sub(r"[^\w\s]", '', slug)
         slug = re.sub(r"\s+", '-', slug)
         slug = slug[:254]
@@ -459,6 +459,7 @@ def load_images():
                 print u'ERROR (%s): Image not available on NPR book page either (%s)' % (book['title'], url)
 
         image = Image.open(path)
+        image.save(path, optimize=True, quality=75)
 
         width = 250
         height = int((float(width) / image.size[0]) * image.size[1])
