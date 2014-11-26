@@ -445,7 +445,17 @@ def load_images():
         file_size = os.path.getsize(path)
 
         if file_size < 10000:
-            print "ERROR (%s): Image not available for ISBN %s" % (book['title'], book['isbn'])
+            print u'LOG (%s): Image not available from Baker and Taylor, using NPR book page' % book['title']
+            url = 'http://www.npr.org/%s' % book['book_seamus_id']
+            npr_r = requests.get(url)
+            soup = BeautifulSoup(npr_r.content)
+            try:
+                alt_img_url = soup.select('.image.book img')[0].attrs.get('src')
+                alt_img_resp = requests.get(alt_img_url)
+                with open(path, 'wb') as writefile:
+                    writefile.write(alt_img_resp.content)
+            except IndexError:
+                print u'ERROR (%s): Image not available on NPR book page either (%s)' % (book['title'], url)
 
         image = Image.open(path)
 
