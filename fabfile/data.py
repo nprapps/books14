@@ -318,7 +318,7 @@ class Book(object):
         """
         Slugify book title
         """
-        slug = value.lower()
+        slug = value.strip().lower()
         slug = re.sub(r"[^\w\s]", '', slug)
         slug = re.sub(r"\s+", '-', slug)
         slug = slug[:254]
