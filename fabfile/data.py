@@ -459,6 +459,7 @@ def load_images():
                 print u'ERROR (%s): Image not available on NPR book page either (%s)' % (book['title'], url)
 
         image = Image.open(path)
+        image.save(path, optimize=True, quality=75)
 
         width = 250
         height = int((float(width) / image.size[0]) * image.size[1])
