@@ -196,7 +196,7 @@
 #largeVersion {
     position: relative;
     width: 500px;
-    height: 320px;
+    height: 0;
     background-color: #d6d6d6;
     display: block;
     /*background: url(images/largeBG.jpg) repeat-y;*/
