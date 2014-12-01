@@ -1,4 +1,4 @@
-@media all and (max-width: 6000px) and (min-width: 1300px) {
+@media all and (max-width: 6000px) and (min-width: 1100px) {
     #largePlacement {
         position: absolute;
         top: 0px;
@@ -14,7 +14,7 @@
 }
 /*//////////*/
 
-@media all and (max-width: 1299px) and (min-width: 0px) {
+@media all and (max-width: 1100px) and (min-width: 0px) {
     #largePlacement {
         position: absolute;
         top: 0px;
@@ -142,15 +142,15 @@
         top: 46px;
         right: 20px;
     }
-  #sponsorInfoSmall {
-    position: absolute;
-    height: 20px;
-    text-align: left;
-    top: 10px;
-    color: #656565;
-    font-size: 9px;
-    right: 20px
-}
+    #sponsorInfoSmall {
+        position: absolute;
+        height: 20px;
+        text-align: left;
+        top: 10px;
+        color: #656565;
+        font-size: 9px;
+        right: 20px
+    }
 }
 /*//////////*/
 
@@ -183,18 +183,18 @@
         top: 100px;
     }
   #sponsorInfoSmall {
-    position: absolute;
-    left:0px;
-    right:0px;
-    height: 20px;
-    width:100%;
-    
-    text-align: center;
-    top: 10px;
-    color: #656565;
-    font-size: 9px;
-    
-}
+        position: absolute;
+        left:0px;
+        right:0px;
+        height: 20px;
+        width:100%;
+        
+        text-align: center;
+        top: 10px;
+        color: #656565;
+        font-size: 9px;
+        
+    }
 }
 /*//////////*/
 
