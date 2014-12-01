@@ -70,7 +70,7 @@
 }
 /*//////////*/
 
-@media all and (max-width: 800px) and (min-width: 0px) {
+@media all and (max-width: 820px) and (min-width: 0px) {
     #deviceSmall {
         display: block;
     }
