@@ -29,6 +29,11 @@ from twitter import Twitter, OAuth
 TAGS_TO_SLUGS = {}
 SLUGS_TO_TAGS = {}
 
+# Promotion image constants
+IMAGE_COLUMNS = 10
+TOTAL_IMAGES = 40
+PROMOTION_IMAGE_WIDTH = 1200
+
 @task(default=True)
 def update():
     """
@@ -473,3 +478,48 @@ def load_images():
         image.save(path, optimize=True, quality=75)
 
     print "End."
+
+@task
+def make_promotion_thumb():
+    images_per_column = TOTAL_IMAGES / IMAGE_COLUMNS
+    image_width = PROMOTION_IMAGE_WIDTH / IMAGE_COLUMNS
+    max_height = int(image_width * images_per_column * 1.5)
+    thumb_size = [image_width, image_width]
+
+    image = Image.new('RGB', [PROMOTION_IMAGE_WIDTH, max_height])
+
+    # Open the books JSON.
+    with open('www/static-data/books.json', 'rb') as readfile:
+        books = json.loads(readfile.read())
+
+    coordinates = [0, 0]
+    last_y = 0
+    total_height = 0
+    min_height = None
+    column_multiplier = 0
+
+    for i, book in enumerate(books[:TOTAL_IMAGES]):
+        if i % images_per_column == 0:
+            if not min_height or total_height < min_height:
+                min_height = total_height
+            coordinates[0] = column_multiplier * image_width
+            coordinates[1] = 0
+            last_y = 0
+            column_multiplier +=1
+            total_height = 0
+
+        path = 'www/assets/cover/%s.jpg' % book['slug']
+        book_image = Image.open(path)
+        width, height = book_image.size
+        ratio = width / float(image_width)
+        new_height = int(height / ratio)
+        resized = book_image.resize((image_width, new_height), Image.ANTIALIAS)
+        coordinates[1] = coordinates[1] + last_y
+        image.paste(resized, tuple(coordinates))
+        last_y = new_height
+        total_height += new_height
+
+    final_width = int(min_height * 1.91)
+    cropped = image.crop((0, 0, final_width, min_height))
+
+    cropped.save('www/assets/img/covers.jpg')
