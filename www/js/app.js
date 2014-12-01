@@ -20,6 +20,7 @@ var $show_books_button;
 var $review;
 var $first;
 var $last;
+var $share_modal;
 
 var next;
 var previous;
@@ -435,6 +436,14 @@ var on_keypress = function (e) {
     }
 }
 
+var on_show_share = function() {
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'open-share-discuss']);
+}
+
+var on_hide_share = function() {
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'close-share-discuss']);
+}
+
 $(function() {
 
     // Set up the global variables.
@@ -454,6 +463,7 @@ $(function() {
     $show_books_button = $('.show-books');
     $toggle_text = $('.toggle-text');
     $review = $('.review');
+    $share_modal = $('#share-modal');
 
     // Event handlers.
     $body.on('click', '.filter .tag', on_tag_clicked);
@@ -469,6 +479,8 @@ $(function() {
     $modal.keyup(on_keypress);
     $modal.on('click', '#previous-book', on_previous);
     $modal.on('click', '#next-book', on_next);
+    $share_modal.on('shown.bs.modal', on_show_share);
+    $share_modal.on('hidden.bs.modal', on_hide_share);
 
     // Set up the page.
     $back_to_top.hide();
