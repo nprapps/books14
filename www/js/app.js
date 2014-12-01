@@ -21,6 +21,8 @@ var $review;
 var $first;
 var $last;
 var $share_modal;
+var $large_ad;
+var $header;
 
 var next;
 var previous;
@@ -444,6 +446,11 @@ var on_hide_share = function() {
     _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'close-share-discuss']);
 }
 
+var resize = function() {
+    var height = $header.outerHeight();
+    $large_ad.height(height);
+}
+
 $(function() {
 
     // Set up the global variables.
@@ -464,6 +471,8 @@ $(function() {
     $toggle_text = $('.toggle-text');
     $review = $('.review');
     $share_modal = $('#share-modal');
+    $large_ad = $('#largeVersion');
+    $header = $('#top');
 
     // Event handlers.
     $body.on('click', '.filter .tag', on_tag_clicked);
@@ -481,8 +490,10 @@ $(function() {
     $modal.on('click', '#next-book', on_next);
     $share_modal.on('shown.bs.modal', on_show_share);
     $share_modal.on('hidden.bs.modal', on_hide_share);
+    $(window).on('resize', resize);
 
     // Set up the page.
+    resize();
     $back_to_top.hide();
     $current_tag.find('#showing-span').text('Showing all books');
     $current_tag.show();
