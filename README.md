@@ -298,7 +298,6 @@ The Google Analytics events tracked in this application are:
 |books14|tweet|`location`||||
 |books14|facebook|`location`||||
 |books14|email|`location`||||
-|books14|new-comment||||
 |books14|open-share-discuss||||
 |books14|close-share-discuss||||
 |books14|summary-copied||||
