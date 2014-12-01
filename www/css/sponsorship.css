@@ -54,15 +54,19 @@
         top: 66px;
         right: 170px;
     }
-  #sponsorInfoSmall {
-    position: absolute;
-    height: 20px;
-    text-align: left;
-    top: 10px;
-    color: #656565;
-    font-size: 9px;
-    right: 20px
-}
+    #sponsorInfoSmall {
+        position: absolute;
+        height: 20px;
+        text-align: left;
+        top: 10px;
+        color: #656565;
+        font-size: 9px;
+        right: 20px
+    }
+    #smallVersion {
+        margin:25px 0 35px 0;
+        border-top: 1px solid #7c99c9;
+    }
 }
 /*//////////*/
 
@@ -94,15 +98,19 @@
         top: 46px;
         right: 20px;
     }
-  #sponsorInfoSmall {
-    position: absolute;
-    height: 20px;
-    text-align: left;
-    top: 10px;
-    color: #656565;
-    font-size: 9px;
-    right: 20px
-}
+    #sponsorInfoSmall {
+        position: absolute;
+        height: 20px;
+        text-align: left;
+        top: 10px;
+        color: #656565;
+        font-size: 9px;
+        right: 20px
+    }
+    #smallVersion {
+        margin:0 0 10px 0;
+        border-top:none;
+    }
 }
 /*//////////*/
 
@@ -224,7 +232,6 @@
     background-color: #c5dae2;
     display: block;
     background-color: #fff;
-    border-top: 1px solid #7c99c9;
     border-bottom: 1px solid #7c99c9;
 }
 #sponsorInfoLarge {
