@@ -1,0 +1,256 @@
+@media all and (max-width: 6000px) and (min-width: 1300px) {
+    #largePlacement {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: block;
+    }
+    #smallPlacement {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        display: none;
+    }
+}
+/*//////////*/
+
+@media all and (max-width: 1299px) and (min-width: 0px) {
+    #largePlacement {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: none;
+    }
+    #smallPlacement {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        display: block;
+    }
+    #deviceSmall {
+        display: block;
+    }
+    #amazonLogoSmall {
+        position: absolute;
+        right: 40px;
+        width: 80px;
+        top: 70px;
+    }
+    #copyLogoSmall {
+        position: absolute;
+        width: 280px;
+        top: 34px;
+        left: 140px;
+    }
+    #copyLineSmall {
+        position: absolute;
+        width: 300px;
+        top: 100px;
+        left: 140px;
+    }
+    #buttonSmall {
+        position: absolute;
+        width: 150px;
+        top: 66px;
+        right: 170px;
+    }
+  #sponsorInfoSmall {
+    position: absolute;
+    height: 20px;
+    text-align: left;
+    top: 10px;
+    color: #656565;
+    font-size: 9px;
+    right: 20px
+}
+}
+/*//////////*/
+
+@media all and (max-width: 800px) and (min-width: 0px) {
+    #deviceSmall {
+        display: block;
+    }
+    #amazonLogoSmall {
+        position: absolute;
+        right: 40px;
+        width: 70px;
+        top: 100px;
+    }
+    #copyLogoSmall {
+        position: absolute;
+        width: 250px;
+        top: 34px;
+        left: 140px;
+    }
+    #copyLineSmall {
+        position: absolute;
+        width: 270px;
+        top: 90px;
+        left: 140px;
+    }
+    #buttonSmall {
+        position: absolute;
+        width: 120px;
+        top: 46px;
+        right: 20px;
+    }
+  #sponsorInfoSmall {
+    position: absolute;
+    height: 20px;
+    text-align: left;
+    top: 10px;
+    color: #656565;
+    font-size: 9px;
+    right: 20px
+}
+}
+/*//////////*/
+
+@media all and (max-width: 600px) and (min-width: 0px) {
+    #deviceSmall {
+        display: none;
+    }
+    #amazonLogoSmall {
+        position: absolute;
+        right: 40px;
+        width: 80px;
+        top: 100px;
+    }
+    #copyLogoSmall {
+        position: absolute;
+        width: 220px;
+        top: 40px;
+        left: 20px;
+    }
+    #copyLineSmall {
+        position: absolute;
+        width: 240px;
+        top: 90px;
+        left: 20px;
+    }
+    #buttonSmall {
+        position: absolute;
+        width: 120px;
+        top: 46px;
+        right: 20px;
+    }
+  #sponsorInfoSmall {
+    position: absolute;
+    height: 20px;
+    text-align: left;
+    top: 10px;
+    color: #656565;
+    font-size: 9px;
+    right: 20px
+}
+}
+/*//////////*/
+
+@media all and (max-width: 400px) and (min-width: 0px) {
+    #deviceSmall {
+        display: none;
+    }
+    #copyLogoSmall {
+        position: absolute;
+        width: 160px;
+        top: 35px;
+        left: 20px;
+    }
+    #copyLineSmall {
+        position: absolute;
+        width: 170px;
+        top: 68px;
+        left: 20px;
+    }
+    #buttonSmall {
+        position: absolute;
+        width: 100px;
+        top: 106px;
+        left: 20px;
+    }
+  #amazonLogoSmall {
+        position: absolute;
+        right: 40px;
+        width: 60px;
+        top: 100px;
+    }
+  #sponsorInfoSmall {
+    position: absolute;
+    left:0px;
+    right:0px;
+    height: 20px;
+    width:100%;
+    
+    text-align: center;
+    top: 10px;
+    color: #656565;
+    font-size: 9px;
+    
+}
+}
+/*//////////*/
+
+.header-wrapper {
+    z-index: 99999 !important;
+}
+#largeVersion {
+    position: relative;
+    width: 500px;
+    height: 396px;
+    background-color: #d6d6d6;
+    display: block;
+    /*background: url(images/largeBG.jpg) repeat-y;*/
+    background: #7c99c9;
+    /* Old browsers */
+    background: -moz-linear-gradient(left, #7c99c9 0%, #ffffff 38%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #7c99c9), color-stop(38%, #ffffff));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, #7c99c9 0%, #ffffff 38%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, #7c99c9 0%, #ffffff 38%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, #7c99c9 0%, #ffffff 38%);
+    /* IE10+ */
+    background: linear-gradient(to right, #7c99c9 0%, #ffffff 38%);
+    /* W3C */
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#7c99c9', endColorstr='#ffffff', GradientType=1);
+    /* IE6-9 */
+}
+#smallVersion {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: #c5dae2;
+    display: block;
+    background-color: #fff;
+    border-top: 1px solid #7c99c9;
+    border-bottom: 1px solid #7c99c9;
+}
+#sponsorInfoLarge {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    top: 30px;
+    color: #656565;
+    font-size: 9px;
+}
+#deviceLarge {
+    position: absolute;
+    left: 110px;
+    width: 149px;
+    top: 82px;
+}
+#copyLineLarge {
+    position: absolute;
+    right: 25px;
+    width: 206px;
+    top: 82px;
+}
+#deviceSmall {
+    position: absolute;
+    left: 30px;
+    width: 92px;
+    top: 10px;
+}
