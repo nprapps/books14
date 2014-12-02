@@ -968,6 +968,13 @@ h1 + #story-meta { margin-top: -11px; }
 			// }
 		}
 	}
+	@media screen and (max-width: @screen-lg){
+		.tags-wrapper &{
+			font-size:15px;
+			padding-top:7px;
+			padding-bottom: 7px;
+		}
+	}
 }
 
 .tag.unavailable {
@@ -1007,6 +1014,12 @@ h1 + #story-meta { margin-top: -11px; }
     	margin-top: 10px;
     	padding-left: 5px;
     }
+
+    @media screen and (max-width: @screen-lg){
+		font-size:15px;
+		padding-top:7px;
+		padding-bottom: 7px;
+	}
 
     &:hover, &.selected, &:active, &:focus {
     	background-color: transparent;
