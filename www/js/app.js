@@ -451,6 +451,11 @@ var resize = function() {
     $large_ad.height(height);
 }
 
+var onClippyCopy = function(e) {
+    alert('Copied to your clipboard!');
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'summary-copied']);
+}
+
 $(function() {
 
     // Set up the global variables.
@@ -507,6 +512,12 @@ $(function() {
         $books_grid.addClass('no-transition');
         $review.remove();
     }
+
+    ZeroClipboard.config({ swfPath: 'js/lib/ZeroClipboard.swf' });
+    var clippy = new ZeroClipboard($(".clippy"));
+    clippy.on('ready', function(readyEvent) {
+        clippy.on('aftercopy', onClippyCopy);
+    });
 
     // Set up the hasher bits to grab the URL hash.
     hasher.changed.add(on_hash_changed);
