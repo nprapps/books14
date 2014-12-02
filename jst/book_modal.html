@@ -1,6 +1,6 @@
 <div class="modal-header hide">
     <!-- <a class="hide npr-logo" href="http://npr.org/books/"><img src="http://media.npr.org/chrome/books/npr-books-logo-color.png" alt="NPR Books" /></a> -->
-    <a href="#" class="hide mobile-dismiss" data-dismiss="modal" aria-hidden="true"><i class="icon-chevron-left"></i> Back to NPR&rsquo;s Book Concierge</a>
+    <a href="#" class="hide mobile-dismiss" data-dismiss="modal" aria-hidden="true"><i class="icon-left-open"></i> Back to NPR&rsquo;s Book Concierge</a>
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 </div>
 <div class="modal-body-wrapper">
@@ -62,18 +62,20 @@
         <div class="modal-footer">
             <div class="social">
                 <p>Share Review:</p>
-                <div class="share-button">
-                    <a href="mailto:?body=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#/book/" + book.slug + '\n\n"' + book.text + '"\n--' + book.reviewer + ', ' + book.reviewer_id.replace(/(<([^>]+)>)/ig,"")) %>&subject=<%= encodeURIComponent("NPR's best books of 2014 - " + book.title) %>" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'email', '<%= book.slug %>']);"><span class="icon icon-mail"></span></a>
-                </div>
+                <a href="mailto:?body=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#/book/" + book.slug + '\n\n"' + book.text + '"\n--' + book.reviewer + ', ' + book.reviewer_id.replace(/(<([^>]+)>)/ig,"")) %>&subject=<%= encodeURIComponent("NPR's best books of 2014 - " + book.title) %>" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'email', '<%= book.slug %>']);">
+                    <div class="share-button">
+                        <span class="icon icon-mail"></span>
+                    </div>
+                </a>
 
                 <a href="https://twitter.com/share?text=<%= encodeURIComponent('Look what I found on @NPRBooks\' #bookconcierge: ' + book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'twitter', '<%= book.slug %>']);">
                     <div class="share-button">
-                    <span class="icon icon-twitter"></span>
+                        <span class="icon icon-twitter"></span>
                     </div>
                 </a>
                 <a href="https://www.facebook.com/dialog/share?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'facebook', '<%= book.slug %>']);">
                     <div class="share-button">
-                    <span class="icon icon-facebook"></span>
+                        <span class="icon icon-facebook"></span>
                     </div>
                 </a>
                 <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'pinterest', '<%= book.slug %>']);">
