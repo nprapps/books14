@@ -120,7 +120,7 @@ def share(slug):
         return 404
 
     featured_book['teaser'] = _make_teaser(featured_book)
-    featured_book['thumb'] = "%sassets/cover/%s-thumb.jpg" % (context['SHARE_URL'], featured_book['slug'])
+    featured_book['thumb'] = "%sassets/cover/%s.jpg" % (context['SHARE_URL'], featured_book['slug'])
 
     context['twitter_handle'] = 'nprbooks'
     context['book'] = featured_book

@@ -12,7 +12,7 @@
     <div class="modal-body-inner">
         <div class="modal-body clearfix">
             <div class="modal-book-cover">
-                <img id="book-image" src="assets/cover/<%= book.slug %><% if (SMALL_MOBILE) { %>-thumb<% } %>.jpg" alt="<%= book.title %>"/>
+                <img id="book-image" src="assets/cover/<%= book.slug %>.jpg" alt="<%= book.title %>"/>
             </div>
 
             <div class="modal-text">
@@ -76,7 +76,7 @@
                     <span class="icon icon-facebook"></span>
                     </div>
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug + "-thumb.jpg") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'pinterest', '<%= book.slug %>']);">
+                <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'pinterest', '<%= book.slug %>']);">
                     <div class="share-button">
                     <span class="icon icon-pinterest-circled"></span>
                     </div>
