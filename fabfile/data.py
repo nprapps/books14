@@ -466,7 +466,7 @@ def load_images():
             npr_r = requests.get(url)
             soup = BeautifulSoup(npr_r.content)
             try:
-                alt_img_url = soup.select('.image.book img')[0].attrs.get('data-original').replace('s99', 's400')
+                alt_img_url = soup.select('.bookedition .image img')[0].attrs.get('src').replace('s99', 's400')
                 print 'LOG (%s): Getting alternate image from %s' % (book['title'], alt_img_url)
                 alt_img_resp = requests.get(alt_img_url)
                 with open(path, 'wb') as writefile:
