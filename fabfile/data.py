@@ -311,7 +311,7 @@ class Book(object):
                 item_list.append(link)
                 print u'LOG (%s): Adding link %s - %s (%s)' % (self.title, link['category'], link['title'], link['url'])
             else:
-                print u'ERROR (%s): Duplicate link %s on %s' % (self.title, link['title'], link['url'])
+                print u'LOG (%s): Duplicate link %s on %s' % (self.title, link['title'], link['url'])
 
         return item_list
 
