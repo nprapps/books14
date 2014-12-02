@@ -80,7 +80,7 @@ def _make_teaser(book):
         width, height = img.size
 
         # Poor man's packing algorithm. How much text will fit?
-        chars = height / 25 * 10
+        chars = height / 25 * 7
     except IOError:
         chars = 140
 
