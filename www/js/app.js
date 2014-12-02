@@ -51,7 +51,7 @@ var back_to_top = function() {
 var isotope_grid = function(filter) {
     $books_grid.isotope({
         filter: filter,
-        transformsEnabled: !MOBILE,
+        transitionDuration: (!MOBILE) ? '0.4s' : 0,
         getSortData: {
             'id': function(el) {
                 return parseInt($(el).data('sort'), 10);
