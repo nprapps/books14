@@ -30,8 +30,8 @@ TAGS_TO_SLUGS = {}
 SLUGS_TO_TAGS = {}
 
 # Promotion image constants
-IMAGE_COLUMNS = 10
-TOTAL_IMAGES = 40
+IMAGE_COLUMNS = 20
+TOTAL_IMAGES = 160
 PROMOTION_IMAGE_WIDTH = 1200
 
 @task(default=True)
@@ -42,7 +42,7 @@ def update():
     update_featured_social()
     load_books()
     load_images()
-
+    make_promotion_thumb()
 
 @task
 def update_featured_social():
