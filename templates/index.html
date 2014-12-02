@@ -166,6 +166,6 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
     <script type="text/javascript">
-        window.BOOKS = {{ books_js|safe }}
+        window.BOOKS = {{ books|tojson|safe }}
     </script>
 {% endblock %}
