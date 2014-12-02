@@ -29,8 +29,7 @@ def index():
 
     # Read the books JSON into the page.
     with open('www/static-data/books.json', 'rb') as readfile:
-        context['books_js'] = readfile.read()
-        books = json.loads(context['books_js'])
+        books = json.loads(readfile.read())
         books_text_only = books[:]
         books_text_only = sorted(books, key=lambda k: k['title'])
 

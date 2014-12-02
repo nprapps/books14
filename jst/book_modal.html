@@ -63,10 +63,10 @@
             <div class="social">
                 <p>Share Review:</p>
                 <div class="share-button">
-                    <span class="icon icon-mail"></span>
+                    <a href="mailto:?body=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#/book/" + book.slug + '\n\n"' + book.text + '"\n--' + book.reviewer + ', ' + book.reviewer_id.replace(/(<([^>]+)>)/ig,"")) %>&subject=<%= encodeURIComponent("NPR's best books of 2014 - " + book.title) %>" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'email', '<%= book.slug %>']);"><span class="icon icon-mail"></span></a>
                 </div>
-                
-                <a href="https://twitter.com/share?text=<%= encodeURIComponent(book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'twitter', '<%= book.slug %>']);">
+
+                <a href="https://twitter.com/share?text=<%= encodeURIComponent('Look what I found on @NPRBooks' #bookconcierge: ' + book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'twitter', '<%= book.slug %>']);">
                     <div class="share-button">
                     <span class="icon icon-twitter"></span>
                     </div>

@@ -982,13 +982,15 @@ h1 + #story-meta { margin-top: -11px; }
     padding: 5px 5px 5px 15px;
     text-align: left;
     position: relative;
-    .transition(all 0.4s ease-in-out);
     .scale(1);
     max-height: 50px;
     opacity: 1;
     display: block;
-   @media screen and (max-width: @screen-sm) {
+    @media screen and (max-width: @screen-sm) {
     	font-size: 16px;
+    }
+    @media screen and (min-width: @screen-md) {
+      .transition(all 0.4s ease-in-out);
     }
 
     &.hide {
