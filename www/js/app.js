@@ -507,12 +507,6 @@ $(function() {
         $tags[$tag.data('tag-slug')] = $tag;
     });
 
-    // Disable isotope transitions
-    if (MOBILE) {
-        $books_grid.addClass('no-transition');
-        $review.remove();
-    }
-
     ZeroClipboard.config({ swfPath: 'js/lib/ZeroClipboard.swf' });
     var clippy = new ZeroClipboard($(".clippy"));
     clippy.on('ready', function(readyEvent) {
