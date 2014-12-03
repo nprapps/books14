@@ -7,6 +7,12 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "ccc2329632396dc096bb638d4b46fb98",
+      "css": "mail-alt",
+      "code": 59404,
+      "src": "fontawesome"
+    },
+    {
       "uid": "b1887b423d2fd15c345e090320c91ca0",
       "css": "th",
       "code": 59393,
