@@ -62,23 +62,23 @@
         <div class="modal-footer">
             <div class="social">
                 <p>Share Review:</p>
-                <a href="mailto:?body=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#/book/" + book.slug + '\n\n"' + book.text.replace(/(<([^>]+)>)/ig,"") + '"\n--' + book.reviewer + ', ' + book.reviewer_id.replace(/(<([^>]+)>)/ig,"")) %>&subject=<%= encodeURIComponent("NPR's best books of 2014 - " + book.title) %>" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'email', '<%= book.slug %>']);">
+                <a href="mailto:?body=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#/book/" + book.slug + '"' + book.text.replace(/(<([^>]+)>)/ig,"") + '"--' + book.reviewer + ', ' + book.reviewer_id.replace(/(<([^>]+)>)/ig,"")) %>&amp;subject=<%= encodeURIComponent("NPR's best books of 2014 - " + book.title) %>" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'email', '<%= book.slug %>']);">
                     <div class="share-button">
                         <span class="icon icon-mail"></span>
                     </div>
                 </a>
 
-                <a href="https://twitter.com/share?text=<%= encodeURIComponent('Look what I found on @NPRBooks\' #bookconcierge: ' + book.title) %>&url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'twitter', '<%= book.slug %>']);">
+                <a href="https://twitter.com/share?text=<%= encodeURIComponent('Look what I found on @NPRBooks\' #bookconcierge: ' + book.title) %>&amp;url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'twitter', '<%= book.slug %>']);">
                     <div class="share-button">
                         <span class="icon icon-twitter"></span>
                     </div>
                 </a>
-                <a href="https://www.facebook.com/dialog/feed?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'facebook', '<%= book.slug %>']);">
+                <a href="https://www.facebook.com/dialog/feed?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&amp;link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&amp;redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'facebook', '<%= book.slug %>']);">
                     <div class="share-button">
                         <span class="icon icon-facebook"></span>
                     </div>
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug + ".jpg") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'pinterest', '<%= book.slug %>']);">
+                <a href="https://pinterest.com/pin/create/button/?url=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&amp;media=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/assets/cover/" + book.slug + ".jpg") %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'pinterest', '<%= book.slug %>']);">
                     <div class="share-button">
                     <span class="icon icon-pinterest-circled"></span>
                     </div>

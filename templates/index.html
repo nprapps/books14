@@ -107,10 +107,10 @@
                        </li>
                     {% endfor %}
 
-                        <a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter"><li>Done</li></a>
+                    <li>a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter">Done</a></li>
 
-                        <p class="browse">Browse more books with the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p>
                 </ul>
+                <p class="browse">Browse more books with the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p>
             </div>
             <!-- Book Cards Grid -->
 
@@ -123,7 +123,7 @@
                         <div class="book-outer-wrapper">
                             <!-- Book Image -->
                             {% if book.teaser %}
-                            <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover"><span class="reviewer-span">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong> full recommendation &raquo;</span></div>
+                            <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover"><span class="reviewer-span">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong> full recommendation &raquo;</span></div></div>
                             {% endif %}
                             <img src="assets/img/cover-loading.gif" data-src="assets/cover/{{ book.slug }}.jpg" alt="{{ book.title }}"/>
                         </div>
