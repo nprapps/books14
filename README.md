@@ -3,8 +3,8 @@ Copyright 2014 NPR.  All rights reserved.  No part of these materials may be rep
 (Want to use this code? Send an email to nprapps@npr.org!)
 
 
-$NEW_PROJECT_SLUG
-========================
+Books Concierge (2014 version)
+==============================
 
 * [What is this?](#what-is-this)
 * [Assumptions](#assumptions)
@@ -15,6 +15,7 @@ $NEW_PROJECT_SLUG
 * [Add a page to the site](#add-a-page-to-the-site)
 * [Run the project](#run-the-project)
 * [COPY editing](#copy-editing)
+* [Load books and covers](#load-books-and-covers)
 * [Arbitrary Google Docs](#arbitrary-google-docs)
 * [Run Python tests](#run-python-tests)
 * [Run Javascript tests](#run-javascript-tests)
@@ -26,7 +27,7 @@ $NEW_PROJECT_SLUG
 What is this?
 -------------
 
-**TKTK: Describe $NEW_PROJECT_SLUG here.**
+A snappy looking presentation of NPR contributors' favorite books of the year.
 
 Assumptions
 -----------
@@ -36,7 +37,7 @@ The following things are assumed to be true in this documentation.
 * You are running OSX.
 * You are using Python 2.7. (Probably the version that came OSX.)
 * You have [virtualenv](https://pypi.python.org/pypi/virtualenv) and [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper) installed and working.
-* You have NPR's AWS credentials stored as environment variables locally.
+* You have NPR's AWS and other credentials stored as environment variables locally.
 
 For more details on the technology stack used with the app-template, see our [development environment blog post](http://blog.apps.npr.org/2013/06/06/how-to-setup-a-developers-environment.html).
 
@@ -189,6 +190,26 @@ download_label
 download_url
 ```
 
+Load books and covers
+---------------------
+
+To run the app, you'll need to load books and covers from a Google Spreadsheet.
+First, see `DATA_GOOGLE_DOC_KEY` in `app_config.py`.
+
+Then run the loader:
+
+```
+fab data.load_books
+fab data.load_images
+```
+
+Alternatively, you can update copy and social media along with books with a
+single command:
+
+```
+fab update
+```
+
 Arbitrary Google Docs
 ----------------------
 Sometimes, our projects need to read data from a Google Doc that's not involved with the COPY rig. In this case, we've got a class for you to download and parse an arbitrary Google Doc to a CSV.
@@ -295,16 +316,18 @@ The Google Analytics events tracked in this application are:
 
 |Category|Action|Label|Value|Custom 1|Custom 2|
 |--------|------|-----|-----|--------|--------|
-|books14|tweet|`location`||||
-|books14|facebook|`location`||||
-|books14|pinterest|`location`||||
-|books14|email|`location`||||
-|books14|open-share-discuss||||
-|books14|close-share-discuss||||
-|books14|summary-copied||||
-|books14|featured-tweet-action|`action`||``tweet_url``|
-|books14|featured-facebook-action|`action`||``post_url``|
-|books14|view-review|`book_slug`||||
-|books14|navigate|`next` or `previous`||||
-|books14|toggle-view|`list` or `grid`||||
+|best-books-2014|tweet|`location`||||
+|best-books-2014|facebook|`location`||||
+|best-books-2014|pinterest|`location`||||
+|best-books-2014|email|`location`||||
+|best-books-2014|open-share-discuss||||
+|best-books-2014|close-share-discuss||||
+|best-books-2014|summary-copied||||
+|best-books-2014|featured-tweet-action|`action`||``tweet_url``|
+|best-books-2014|featured-facebook-action|`action`||``post_url``|
+|best-books-2014|view-review|`book_slug`||||
+|best-books-2014|navigate|`next` or `previous`||||
+|best-books-2014|toggle-view|`list` or `grid`||||
+|best-books-2014|clear-tags|||||
+|best-books-2014|selected-tags|`comma separated list of tags`||||
 
