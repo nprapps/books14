@@ -35,6 +35,7 @@
                 <!-- Purchase/Related Links -->
 
                 <p class="book-modal-links">
+                    <a href="<%= book.oclc_link %>" target="_blank">Find at your library</a>
                     <a href="http://www.amazon.com/dp/<%= book.isbn %>?tag=npr-5-20" target="_blank" class="purchase-link">Amazon</a>
                     <% if (book.hide_ibooks != 'TRUE') { %>
                     <a href="https://itunes.apple.com/us/book/isbn<%= book.isbn13 %>?&at=11l79Y" target="_blank" class="purchase-link">iBooks</a>
