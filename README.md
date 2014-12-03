@@ -80,8 +80,8 @@ curl https://npmjs.org/install.sh | sh
 Then bootstrap the project:
 
 ```
-cd $NEW_PROJECT_SLUG
-mkvirtualenv --no-site-packages $NEW_PROJECT_SLUG
+cd books14
+mkvirtualenv --no-site-packages books14
 pip install -r requirements.txt
 npm install
 fab update
@@ -278,7 +278,7 @@ Compile static assets
 Compile LESS to CSS, compile javascript templates to Javascript and minify all assets:
 
 ```
-workon $NEW_PROJECT_SLUG
+workon books14
 fab render
 ```
 
