@@ -296,7 +296,7 @@ class Book(object):
             link = {
                 'category': '',
                 'title': item.select('.title')[0].text.strip(),
-                'url': item.select('a')[0].attrs.get('href'),
+                'url': item.select('.title a')[0].attrs.get('href'),
             }
             if link['url'] not in urls:
                 category_elements = item.select('.slug')
