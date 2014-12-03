@@ -68,6 +68,8 @@ var filter_books = function() {
     $all_tags.parent().removeClass('selected unavailable');
     $all_tags.removeClass('selected unavailable');
 
+    selected_tags.sort();
+
     if (selected_tags.length > 0) {
         var filter = '';
         var label = [];
@@ -192,12 +194,12 @@ var on_tag_clicked = function() {
 */
 var on_page_scroll = function() {
     var y_scroll_pos = window.pageYOffset;
-    var scroll_pos_test = 1000;
+    var scroll_pos_test = 1200;
 
     if(y_scroll_pos > scroll_pos_test && $('#myModal:visible').length === 0) {
         $back_to_top.fadeIn(1000);
     } else {
-        $back_to_top.fadeOut(1000);
+        $back_to_top.fadeOut(400);
     }
 };
 
@@ -215,6 +217,7 @@ var on_modal_tag_clicked = function() {
  */
 var on_clear_tags_clicked = function() {
     hasher.setHash('_');
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'clear-tags']);
     return false;
 };
 
@@ -262,8 +265,8 @@ var on_book_hash = function(slug) {
             // Next and previous are based on hidden/not hidden isotope elements.
             next = grid_item.nextAll(':visible').first();
             previous = grid_item.prevAll(':visible').first();
-            $first = $books_grid.find(':visible').first();
-            $last = $books_grid.find(':visible').last();
+            $first = $books_grid.find('.book:visible').first();
+            $last = $books_grid.find('.book:visible').last();
         }
 
 
@@ -328,13 +331,23 @@ var on_hash_changed = function(new_hash, old_hash) {
     var hash_type = bits[0];
     var hash_slug = bits[1];
 
+    // Track _ the same as root
+    if (new_hash == '_') {
+        new_hash = '';
+    }
+
     if (hash_type == 'tag') {
         $modal.modal('hide');
         on_tag_hash(hash_slug);
+        selected_tags.sort();
+        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'selected-tags', selected_tags.join(',')]);
     } else if (hash_type == 'book') {
         on_book_hash(hash_slug);
         $modal.show().css('overflow-y','hidden').scrollTop(0).css('overflow-y','scroll');
 
+        if (new_hash != '') {
+            _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'view-review', hash_slug]);
+        }
 
         // On first load, we need to load in the books. #142
         if (first_hash) {
@@ -346,14 +359,7 @@ var on_hash_changed = function(new_hash, old_hash) {
         filter_books();
     }
 
-    // Track _ the same as root
-    if (new_hash == '_') {
-        new_hash = '';
-    }
 
-    if (new_hash != '') {
-        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'view-review', hash_slug]);
-    }
 
     first_hash = false;
 
@@ -412,7 +418,7 @@ var toggle_books_list = function() {
 
     if ($books_grid.is(':visible')) {
         _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'toggle-view', 'grid']);
-        isotope_grid();
+        filter_books();
     } else {
         _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'toggle-view', 'list']);
     }

@@ -4,7 +4,6 @@
 <header id="top">
     <div class="header-wrapper">
         <a class="npr" href="http://npr.org/books/"><img src="assets/books_logo.png" alt="NPR Books" /></a>
-        </ul>
         <h1>{{ COPY.content.header_title }}</h1>
         <h2>{{ COPY.content.header_subhead }}</h2>
         <p class="byline">by {{ COPY.attribution.byline }}</p>
@@ -42,32 +41,6 @@
 {% endblock %}
 
 {% block content %}
-
-    <!-- //////////////////////////////////////// CENTER SPONSORSHIP //////////////////////////////////////// -->
-    <div id="smallPlacement">
-        <div id="smallVersion">
-          <div id="sponsorInfoSmall">support for NPR Books comes from <a href="http://www.amazon.com" target="_blank">Amazon</a></div>
-            <div id="deviceSmall">
-              <a href="http://ad.doubleclick.net/ddm/clk/285207749;111749353;n" target="_blank"><img src="assets/sponsorship/smalldevice.png" width="82"></a>
-            </div>
-            <div id="copyLogoSmall">
-                <img src="assets/sponsorship/smalllogo.jpg" width="100%">
-            </div>
-            <div id="copyLineSmall">
-                <img src="assets/sponsorship/smallcopyline.jpg" width="100%">
-            </div>
-            <div id="buttonSmall">
-                <a href="http://ad.doubleclick.net/ddm/clk/285207749;111749353;n" target="_blank">
-                    <img src="assets/sponsorship/learnmorebutton.jpg" width="100%">
-                </a>
-            </div>
-            <div id="amazonLogoSmall">
-                <img src="assets/sponsorship/smallamazonlogo.jpg">
-            </div>
-        </div>
-    </div>
-    <!-- //////////////////////////////////////// CENTER SPONSORSHIP //////////////////////////////////////// -->
-
     <div class="book-container">
         <!-- <div class="top-row"> -->
             <div class="spacer">
@@ -95,7 +68,7 @@
                 <!-- All Tags List -->
                 <ul class="filter tags option-set list-unstyled hidden-xs" data-filter-group="category">
 
-                    <li class="visible-xs mobile-label">{{ COPY.content.filter_by }} <span class="close visible-xs close-modal"aria-hidden="true">&times;</span></li>
+                    <li class="visible-xs mobile-label">{{ COPY.content.filter_by }} <span class="close visible-xs close-modal" aria-hidden="true">&times;</span></li>
 
                         <li>
                         <button class="btn btn-large btn-info clear-tags hide" data-filter-value="*"><i class="icon-cancel-circled2">&nbsp;&nbsp;</i>{{ COPY.content.clear_filters }}</button>
@@ -108,9 +81,9 @@
                        </li>
                     {% endfor %}
 
-                        <a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter"><li>Done</li></a>
+                    <li><a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter">Done</a></li>
+                    <li><p class="browse">Browse more books with the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p></li>
 
-                        <p class="browse">Browse more books with the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p>
                 </ul>
             </div>
             <!-- Book Cards Grid -->
@@ -124,7 +97,7 @@
                         <div class="book-outer-wrapper">
                             <!-- Book Image -->
                             {% if book.teaser %}
-                            <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover"><span class="reviewer-span">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong> full recommendation &raquo;</div></div>
+                            <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover"><span class="reviewer-span">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong> full recommendation &raquo;</span></div></div>
                             {% endif %}
                             <img src="assets/img/cover-loading.gif" data-src="assets/cover/{{ book.slug }}.jpg" alt="{{ book.title }}"/>
                         </div>
@@ -147,10 +120,10 @@
         </div>
     </div>
 
-    <button class="btn" id="back-to-top">
+    <div class="btn" id="back-to-top">
         <p id="back-to-top-text">Back to top&nbsp;&nbsp;<i class="icon-up-hand"></i></p>
         <p id="back-to-top-no-text"><i class="icon-up-hand"></i></p>
-    </button>
+    </div>
 
 {% endblock %}
 
@@ -165,7 +138,7 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-    <script type="text/javascript">
-        window.BOOKS = {{ books|tojson|safe }}
-    </script>
+<script type="text/javascript">
+    window.BOOKS = {{ books_js|safe }}
+</script>
 {% endblock %}

@@ -27,6 +27,9 @@
         left: 0px;
         display: block;
     }
+    #smallPlacement img {
+        width: 100%;
+    }
     #deviceSmall {
         display: block;
     }
@@ -64,7 +67,7 @@
         right: 20px
     }
     #smallVersion {
-        margin:25px 0 55px 0;
+        margin: 0 0 55px 0;
         border-top: 1px solid #7c99c9;
     }
 }
@@ -228,7 +231,7 @@
 #smallVersion {
     position: relative;
     width: 100%;
-    height: 150px;
+    height: 165px;
     background-color: #c5dae2;
     display: block;
     background-color: #fff;

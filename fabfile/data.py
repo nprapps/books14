@@ -296,7 +296,7 @@ class Book(object):
             link = {
                 'category': '',
                 'title': item.select('.title')[0].text.strip(),
-                'url': item.select('a')[0].attrs.get('href'),
+                'url': item.select('.title a')[0].attrs.get('href'),
             }
             if link['url'] not in urls:
                 category_elements = item.select('.slug')
@@ -459,14 +459,16 @@ def load_images():
             writefile.write(r.content)
 
         file_size = os.path.getsize(path)
-
         if file_size < 10000:
             print u'LOG (%s): Image not available from Baker and Taylor, using NPR book page' % book['title']
             url = 'http://www.npr.org/%s' % book['book_seamus_id']
             npr_r = requests.get(url)
             soup = BeautifulSoup(npr_r.content)
             try:
-                alt_img_url = soup.select('.bookedition .image img')[0].attrs.get('src').replace('s99', 's400')
+                if book['title'] == 'The Three-Body Problem':
+                    alt_img_url = 'http://media.npr.org/assets/bakertaylor/covers/t/the-three-body-problem/9780765377067_custom-d83e0e334f348e6c52fe5da588ec3448921af64f-s600-c85.jpg'
+                else:
+                    alt_img_url = soup.select('.bookedition .image img')[0].attrs.get('src').replace('s99', 's400')
                 print 'LOG (%s): Getting alternate image from %s' % (book['title'], alt_img_url)
                 alt_img_resp = requests.get(alt_img_url)
                 with open(path, 'wb') as writefile:
