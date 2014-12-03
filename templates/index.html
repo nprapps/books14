@@ -4,7 +4,6 @@
 <header id="top">
     <div class="header-wrapper">
         <a class="npr" href="http://npr.org/books/"><img src="assets/books_logo.png" alt="NPR Books" /></a>
-        </ul>
         <h1>{{ COPY.content.header_title }}</h1>
         <h2>{{ COPY.content.header_subhead }}</h2>
         <p class="byline">by {{ COPY.attribution.byline }}</p>
@@ -124,7 +123,7 @@
                         <div class="book-outer-wrapper">
                             <!-- Book Image -->
                             {% if book.teaser %}
-                            <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover"><span class="reviewer-span">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong> full recommendation &raquo;</div></div>
+                            <div class="review hover">{{ book.teaser|safe }}<br /><div class="reviewer hover"><span class="reviewer-span">Read <strong>{{ book.reviewer }}'{% if book.reviewer[-1] != 's' %}s{% endif %}</strong> full recommendation &raquo;</span></div>
                             {% endif %}
                             <img src="assets/img/cover-loading.gif" data-src="assets/cover/{{ book.slug }}.jpg" alt="{{ book.title }}"/>
                         </div>
