@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'books-2014';
-  src: url('../font/books-2014.eot?92539176');
-  src: url('../font/books-2014.eot?92539176#iefix') format('embedded-opentype'),
-       url('../font/books-2014.woff?92539176') format('woff'),
-       url('../font/books-2014.ttf?92539176') format('truetype'),
-       url('../font/books-2014.svg?92539176#books-2014') format('svg');
+  src: url('../font/books-2014.eot?99463217');
+  src: url('../font/books-2014.eot?99463217#iefix') format('embedded-opentype'),
+       url('../font/books-2014.woff?99463217') format('woff'),
+       url('../font/books-2014.ttf?99463217') format('truetype'),
+       url('../font/books-2014.svg?99463217#books-2014') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'books-2014';
-    src: url('../font/books-2014.svg?92539176#books-2014') format('svg');
+    src: url('../font/books-2014.svg?99463217#books-2014') format('svg');
   }
 }
 */
@@ -50,15 +50,16 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-th:before { content: '\e800'; } /* '' */
-.icon-list-bullet:before { content: '\e801'; } /* '' */
-.icon-cancel-circled2:before { content: '\e802'; } /* '' */
-.icon-minus-circled:before { content: '\e803'; } /* '' */
-.icon-right-open:before { content: '\e804'; } /* '' */
-.icon-left-open:before { content: '\e805'; } /* '' */
-.icon-facebook:before { content: '\e806'; } /* '' */
-.icon-twitter:before { content: '\e807'; } /* '' */
-.icon-mail:before { content: '\e808'; } /* '' */
-.icon-pinterest-circled:before { content: '\e809'; } /* '' */
-.icon-up-hand:before { content: '\e80a'; } /* '' */
+.icon-book:before { content: '\e800'; } /* '' */
+.icon-th:before { content: '\e801'; } /* '' */
+.icon-list-bullet:before { content: '\e802'; } /* '' */
+.icon-right-open:before { content: '\e803'; } /* '' */
+.icon-left-open:before { content: '\e804'; } /* '' */
+.icon-pinterest-circled:before { content: '\e805'; } /* '' */
+.icon-cancel-circled2:before { content: '\e806'; } /* '' */
+.icon-facebook:before { content: '\e807'; } /* '' */
+.icon-up-hand:before { content: '\e808'; } /* '' */
+.icon-minus-circled:before { content: '\e809'; } /* '' */
+.icon-twitter:before { content: '\e80a'; } /* '' */
 .icon-export:before { content: '\e80b'; } /* '' */
+.icon-mail-alt:before { content: '\e80c'; } /* '' */
