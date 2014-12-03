@@ -50,14 +50,14 @@
               <a href="http://ad.doubleclick.net/ddm/clk/285207749;111749353;n" target="_blank"><img src="assets/sponsorship/smalldevice.png" width="82"></a>
             </div>
             <div id="copyLogoSmall">
-                <img src="assets/sponsorship/smalllogo.jpg" width="100%">
+                <img src="assets/sponsorship/smalllogo.jpg">
             </div>
             <div id="copyLineSmall">
-                <img src="assets/sponsorship/smallcopyline.jpg" width="100%">
+                <img src="assets/sponsorship/smallcopyline.jpg">
             </div>
             <div id="buttonSmall">
                 <a href="http://ad.doubleclick.net/ddm/clk/285207749;111749353;n" target="_blank">
-                    <img src="assets/sponsorship/learnmorebutton.jpg" width="100%">
+                    <img src="assets/sponsorship/learnmorebutton.jpg">
                 </a>
             </div>
             <div id="amazonLogoSmall">
@@ -94,7 +94,7 @@
                 <!-- All Tags List -->
                 <ul class="filter tags option-set list-unstyled hidden-xs" data-filter-group="category">
 
-                    <li class="visible-xs mobile-label">{{ COPY.content.filter_by }} <span class="close visible-xs close-modal"aria-hidden="true">&times;</span></li>
+                    <li class="visible-xs mobile-label">{{ COPY.content.filter_by }} <span class="close visible-xs close-modal" aria-hidden="true">&times;</span></li>
 
                         <li>
                         <button class="btn btn-large btn-info clear-tags hide" data-filter-value="*"><i class="icon-cancel-circled2">&nbsp;&nbsp;</i>{{ COPY.content.clear_filters }}</button>
@@ -107,7 +107,7 @@
                        </li>
                     {% endfor %}
 
-                    <li>a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter">Done</a></li>
+                    <li><a href="javascript:;" class="visible-xs close-modal" id="close-mobile-filter">Done</a></li>
 
                 </ul>
                 <p class="browse">Browse more books with the <a href="http://apps.npr.org/best-books-2013/" target="_blank">2013 Concierge</a></p>
@@ -146,10 +146,10 @@
         </div>
     </div>
 
-    <button class="btn" id="back-to-top">
+    <div class="btn" id="back-to-top">
         <p id="back-to-top-text">Back to top&nbsp;&nbsp;<i class="icon-up-hand"></i></p>
         <p id="back-to-top-no-text"><i class="icon-up-hand"></i></p>
-    </button>
+    </div>
 
 {% endblock %}
 
@@ -164,7 +164,7 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-    <script type="text/javascript">
-        window.BOOKS = {{ books|tojson|safe }}
-    </script>
+<script type="text/javascript">
+    window.BOOKS = {{ books_js|safe }}
+</script>
 {% endblock %}
