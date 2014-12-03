@@ -73,7 +73,7 @@
                         <span class="icon icon-twitter"></span>
                     </div>
                 </a>
-                <a href="https://www.facebook.com/dialog/share?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'facebook', '<%= book.slug %>']);">
+                <a href="https://www.facebook.com/dialog/feed?app_id=<%= APP_CONFIG.FACEBOOK_APP_ID %>&link=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "/share/" + book.slug + ".html") %>&redirect_uri=<%= encodeURIComponent(APP_CONFIG.S3_BASE_URL + "#book/" + book.slug) %>" target="_blank" onclick="_gaq.push(['_trackEvent', '<%= APP_CONFIG.PROJECT_SLUG %>', 'facebook', '<%= book.slug %>']);">
                     <div class="share-button">
                         <span class="icon icon-facebook"></span>
                     </div>
