@@ -27,6 +27,9 @@
         left: 0px;
         display: block;
     }
+    #smallPlacement img {
+        width: 100%;
+    }
     #deviceSmall {
         display: block;
     }
