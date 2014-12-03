@@ -415,7 +415,7 @@ var toggle_books_list = function() {
 
     if ($books_grid.is(':visible')) {
         _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'toggle-view', 'grid']);
-        isotope_grid();
+        isotope_grid(filter);
     } else {
         _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'toggle-view', 'list']);
     }
