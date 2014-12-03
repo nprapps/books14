@@ -195,12 +195,12 @@ var on_tag_clicked = function() {
 */
 var on_page_scroll = function() {
     var y_scroll_pos = window.pageYOffset;
-    var scroll_pos_test = 1000;
+    var scroll_pos_test = 1200;
 
     if(y_scroll_pos > scroll_pos_test && $('#myModal:visible').length === 0) {
         $back_to_top.fadeIn(1000);
     } else {
-        $back_to_top.fadeOut(1000);
+        $back_to_top.fadeOut(400);
     }
 };
 
