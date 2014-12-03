@@ -69,7 +69,6 @@ var filter_books = function() {
     $all_tags.removeClass('selected unavailable');
 
     selected_tags.sort();
-    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'selected-tags', selected_tags.join(',')]);
 
     if (selected_tags.length > 0) {
         var filter = '';
@@ -218,6 +217,7 @@ var on_modal_tag_clicked = function() {
  */
 var on_clear_tags_clicked = function() {
     hasher.setHash('_');
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'clear-tags']);
     return false;
 };
 
@@ -339,6 +339,8 @@ var on_hash_changed = function(new_hash, old_hash) {
     if (hash_type == 'tag') {
         $modal.modal('hide');
         on_tag_hash(hash_slug);
+        selected_tags.sort();
+        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'selected-tags', selected_tags.join(',')]);
     } else if (hash_type == 'book') {
         on_book_hash(hash_slug);
         $modal.show().css('overflow-y','hidden').scrollTop(0).css('overflow-y','scroll');
