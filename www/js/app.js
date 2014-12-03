@@ -68,6 +68,9 @@ var filter_books = function() {
     $all_tags.parent().removeClass('selected unavailable');
     $all_tags.removeClass('selected unavailable');
 
+    selected_tags.sort();
+    _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'selected-tags', selected_tags.join(',')]);
+
     if (selected_tags.length > 0) {
         var filter = '';
         var label = [];
