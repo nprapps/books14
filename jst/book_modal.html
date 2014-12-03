@@ -46,7 +46,7 @@
                 <ul>
                     <% _.each(book.links, function(link) { %>
                     <li class="book-modal-links">
-                        <a href="http://npr.org/<%= link.url %>" target="_blank">
+                        <a href="<%= link.url %>" target="_blank">
                             <strong>
                             <% if (link.category) { %><%= link.category %>:<% } else { %>Feature:<% } %>
                             </strong>
