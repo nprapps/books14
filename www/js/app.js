@@ -331,6 +331,11 @@ var on_hash_changed = function(new_hash, old_hash) {
     var hash_type = bits[0];
     var hash_slug = bits[1];
 
+    // Track _ the same as root
+    if (new_hash == '_') {
+        new_hash = '';
+    }
+
     if (hash_type == 'tag') {
         $modal.modal('hide');
         on_tag_hash(hash_slug);
@@ -338,6 +343,9 @@ var on_hash_changed = function(new_hash, old_hash) {
         on_book_hash(hash_slug);
         $modal.show().css('overflow-y','hidden').scrollTop(0).css('overflow-y','scroll');
 
+        if (new_hash != '') {
+            _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'view-review', hash_slug]);
+        }
 
         // On first load, we need to load in the books. #142
         if (first_hash) {
@@ -349,14 +357,7 @@ var on_hash_changed = function(new_hash, old_hash) {
         filter_books();
     }
 
-    // Track _ the same as root
-    if (new_hash == '_') {
-        new_hash = '';
-    }
 
-    if (new_hash != '') {
-        _gaq.push(['_trackEvent', APP_CONFIG.PROJECT_SLUG, 'view-review', hash_slug]);
-    }
 
     first_hash = false;
 
