@@ -265,8 +265,8 @@ var on_book_hash = function(slug) {
             // Next and previous are based on hidden/not hidden isotope elements.
             next = grid_item.nextAll(':visible').first();
             previous = grid_item.prevAll(':visible').first();
-            $first = $books_grid.find(':visible').first();
-            $last = $books_grid.find(':visible').last();
+            $first = $books_grid.find('.book:visible').first();
+            $last = $books_grid.find('.book:visible').last();
         }
 
 
