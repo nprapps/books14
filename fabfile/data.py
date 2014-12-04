@@ -233,26 +233,12 @@ class Book(object):
         self.isbn = self._process_text(kwargs['isbn'])
         if self.isbn:
             self.isbn13 = self._process_isbn13(self.isbn)
-            self.oclc_link = self._process_oclc_link(self.isbn)
         else:
             print u'ERROR (%s): No ISBN' % self.title
 
+        self.oclc = self._process_text(kwargs['oclc'])
         self.links = self._process_links(kwargs['book_seamus_id'])
         self.tags = self._process_tags(kwargs['tags'])
-
-    def _process_oclc_link(self, isbn):
-        """
-        Get OCLC (library) link
-        """
-        url = 'http://xisbn.worldcat.org/webservices/xid/isbn/%s' % isbn
-        r = requests.get(url, params={'method':'getMetadata', 'format':'json', 'fl':'url'})
-        data = r.json()
-        if data.get('stat') == 'ok':
-            oclc_link = data['list'][0]['url']
-            print u'LOG (%s): Found OCLC link %s' % (self.title, oclc_link)
-            return oclc_link
-        else:
-            return None
 
     def _process_text(self, value):
         """
