@@ -314,20 +314,26 @@ Analytics
 
 The Google Analytics events tracked in this application are:
 
-|Category|Action|Label|Value|Custom 1|Custom 2|
-|--------|------|-----|-----|--------|--------|
-|best-books-2014|tweet|`location`||||
-|best-books-2014|facebook|`location`||||
-|best-books-2014|pinterest|`location`||||
-|best-books-2014|email|`location`||||
-|best-books-2014|open-share-discuss||||
-|best-books-2014|close-share-discuss||||
-|best-books-2014|summary-copied||||
-|best-books-2014|featured-tweet-action|`action`||``tweet_url``|
-|best-books-2014|featured-facebook-action|`action`||``post_url``|
-|best-books-2014|view-review|`book_slug`||||
-|best-books-2014|navigate|`next` or `previous`||||
-|best-books-2014|toggle-view|`list` or `grid`||||
-|best-books-2014|clear-tags|||||
-|best-books-2014|selected-tags|`comma separated list of tags`||||
+|Category|Action|Label|Value|Notes|
+|--------|------|-----|-----|-----|
+|best-books-2014|tweet|`location`|||
+|best-books-2014|facebook|`location`|||
+|best-books-2014|pinterest|`location`|||
+|best-books-2014|email|`location`|||
+|best-books-2014|open-share-discuss|||
+|best-books-2014|close-share-discuss|||
+|best-books-2014|summary-copied|||
+|best-books-2014|view-review|`book_slug`|||
+|best-books-2014|navigate|`next` or `previous`|||
+|best-books-2014|toggle-view|`list` or `grid`|||
+|best-books-2014|clear-tags||||
+|best-books-2014|selected-tags|`comma separated list of tags`|||
+|best-books-2014|library|`book_slug`||Valid after 12-4-2014|
+|best-books-2014|amazon|`book_slug`||Valid after 12-4-2014|
+|best-books-2014|ibooks|`book_slug`||Valid after 12-4-2014|
+|best-books-2014|indiebound|`book_slug`||Valid after 12-4-2014|
 
+Note: The `library`, `amazon`, `ibooks`, and `indiebound` events, which track
+link clicks from individual reviews, were added after the project was deployed.
+They should only be used for analysis that starts on or after 12-5-2014.
+launch.
