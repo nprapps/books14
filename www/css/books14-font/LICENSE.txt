@@ -1,15 +1,6 @@
 Font license info
 
 
-## Elusive
-
-   Copyright (C) 2013 by Aristeides Stathopoulos
-
-   Author:    Aristeides Stathopoulos
-   License:   SIL (http://scripts.sil.org/OFL)
-   Homepage:  http://aristeides.com/
-
-
 ## Font Awesome
 
    Copyright (C) 2012 by Dave Gandy
@@ -17,5 +8,23 @@ Font license info
    Author:    Dave Gandy
    License:   SIL ()
    Homepage:  http://fortawesome.github.com/Font-Awesome/
+
+
+## Modern Pictograms
+
+   Copyright (c) 2012 by John Caserta. All rights reserved.
+
+   Author:    John Caserta
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://thedesignoffice.org/project/modern-pictograms/
+
+
+## Maki
+
+   Copyright (C) Mapbox, LCC
+
+   Author:    Mapbox
+   License:   BSD (https://github.com/mapbox/maki/blob/gh-pages/LICENSE.txt)
+   Homepage:  http://mapbox.com/maki/
 
 
