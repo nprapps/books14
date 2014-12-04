@@ -16,6 +16,12 @@ app = Flask(__name__)
 app.add_template_filter(smarty_filter, name='smarty')
 app.add_template_filter(urlencode_filter, name='urlencode')
 
+def _title_sorter(book):
+    title = book['title']
+    if title.startswith('The'):
+        title = book['title'][4:]
+    return title
+
 @app.route('/')
 def index():
     """
@@ -32,7 +38,7 @@ def index():
         context['books_js'] = readfile.read()
         books = json.loads(context['books_js'])
         books_text_only = books[:]
-        books_text_only = sorted(books, key=lambda k: k['title'])
+        books_text_only = sorted(books, key=_title_sorter)
 
     for book in books:
         if not book['text']:
