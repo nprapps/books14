@@ -84,15 +84,9 @@
             <div class="row">
                 <div id="main-content" class="col-md-12">
                     {% block content %}
-                    <h1>{{ project_name }}</h1>
-                    App content goes here.
-
-                    <i class="icon icon-play"></i>
                     {% endblock content %}
                 </div>
             </div>
-            {% block wide_content %}
-            {% endblock wide_content %}
         </div>
     </section>
 
@@ -121,15 +115,6 @@
     {% endblock outer_content %}
 
     {% include '_share_modal.html' %}
-
-    <!-- AD CODE -->
-    <script>
-        NPR = {};
-        NPR.PageInfo = {};
-        NPR.PageInfo.getUrlParameter = function (param) {
-            return false;
-        };
-    </script>
 
     <!-- JS -->
     {{ JS.push('js/app_config.js') }}
