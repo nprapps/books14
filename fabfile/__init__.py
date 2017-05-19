@@ -115,7 +115,7 @@ def _deploy_to_s3(path='.gzip'):
             include_flags += '--include "%s" ' % line.strip()
 
     exclude_flags += '--exclude "www/assets" '
-    
+
     sync = ('aws s3 sync %s/ %s/ --acl "public-read" ' + exclude_flags + ' --cache-control "max-age=%i" --region "%s"') % (
         path,
         app_config.S3_DEPLOY_URL,
@@ -171,7 +171,7 @@ def deploy(quick=False):
     render.render_all()
     _gzip('www', '.gzip')
     _deploy_to_s3()
-    _deploy_assets()
+    # _deploy_assets()
 
 """
 App-Specific Commands
@@ -219,7 +219,7 @@ def shiva_the_destroyer():
             app_config.S3_BUCKET['bucket_name'],
             app_config.PROJECT_SLUG,
             app_config.S3_BUCKET['region']
-        ) 
+        )
 
         local(sync)
 

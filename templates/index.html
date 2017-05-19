@@ -8,7 +8,7 @@
         <h2>{{ COPY.content.header_subhead }}</h2>
         <p class="byline">by {{ COPY.attribution.byline }}</p>
         <div class="chatter"><p>{{ COPY.content.chatter }}
-            <a href="http://apps.npr.org/best-books-2013/#/_" target="_blank">2013</a>,
+            <a href="https://apps.npr.org/best-books-2013/#/_" target="_blank">2013</a>,
             <a href="http://www.npr.org/2012/11/30/166251839/best-books-of-2012-the-complete-list" target="_blank">2012</a>,
             <a href="http://www.npr.org/2011/11/30/142942283/the-best-books-of-2011-the-complete-list" target="_blank">2011</a>,
             <a href="http://www.npr.org/2010/12/23/131566277/best-books-of-2010-the-complete-list" target="_blank">2010</a>,
@@ -19,24 +19,6 @@
 
         <button class="share btn btn-default" data-toggle="modal" data-backdrop="static" data-target="#share-modal"><i class="icon-export"></i> SHARE THIS APP</button>
     </div>
-
-    <!-- //////////////////////////////////////// TOP RIGHT SPONSORSHIP ////////////////////////////////////////-->
-    <iframe src="http://s.amazon-adsystem.com/iu3?d=forester-did&ex-fargs=%3Fsr%3DP%26m%3D1%26c%3D1584562001%26a%3D1684637001%26up%3DCS_1501464001&ex-fch=416619&cb=%n" width=1 height=1 frameborder=0 marginwidth=0 marginheight=0 class="hide"></iframe>
-    <!-- 768+ -->
-    <div id="largePlacement">
-        <div id="largeVersion">
-          <div id="sponsorInfoLarge">support for NPR Books comes from <a href="http://www.amazon.com" target="_blank">Amazon</a></div>
-            <div id="deviceLarge">
-              <a href="http://ad.doubleclick.net/ddm/clk/285208207;111749366;h" target="_blank"><img src="assets/sponsorship/largedevice.png"></a>
-            </div>
-            <div id="copyLineLarge">
-                <a href="http://ad.doubleclick.net/ddm/clk/285208207;111749366;h" target="_blank">
-                    <img src="assets/sponsorship/largecopy.jpg">
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- ///////////////////////////////////////// TOP RIGHT SPONSORSHIP ////////////////////////////////////////-->
 </header>
 {% endblock %}
 
@@ -64,7 +46,7 @@
         <div class="grid-row">
             <div class="tags-wrapper">
 
-                
+
                 <!-- All Tags List -->
                 <ul class="filter tags option-set list-unstyled hidden-xs" data-filter-group="category">
 
@@ -89,7 +71,7 @@
             <!-- Book Cards Grid -->
 
             <div class="books-grid-wrapper">
-                
+
                 <div id="books-grid" class="filter-inactive">
                     {% for book in books %}
                     <div id="{{ book.slug }}" class="book card isotope-item {% for tag in book.tags %}tag-{{ tag }} {% endfor %} isotope-hidden no-touch" data-sort="{{ loop.index }}">

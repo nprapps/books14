@@ -9,6 +9,8 @@ See get_secrets() below for a fast way to access them.
 """
 
 import os
+from authomatic.providers import oauth2
+from authomatic import Authomatic
 
 """
 NAMES
@@ -51,7 +53,7 @@ ASSETS_S3_BUCKET = {
     'region': 'us-east-1'
 }
 
-DEFAULT_MAX_AGE = 20 
+DEFAULT_MAX_AGE = 20
 ASSETS_MAX_AGE = 86400
 
 PRODUCTION_SERVERS = ['cron.nprapps.org']
@@ -86,24 +88,24 @@ SERVER_SERVICES = [
 ]
 
 # These variables will be set at runtime. See configure_targets() below
-S3_BUCKET = None 
-S3_BASE_URL = None 
+S3_BUCKET = None
+S3_BASE_URL = None
 S3_DEPLOY_URL = None
 SERVERS = []
 SERVER_BASE_URL = None
-SERVER_LOG_PATH = None 
+SERVER_LOG_PATH = None
 DEBUG = True
 
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_URL = 'https://docs.google.com/spreadsheet/ccc?key=0Ak3IIavLYTovdE9hWkUwRFVlSGxmMkdhWXhrNW9LekE&usp=drive_web#gid=0'
+COPY_GOOGLE_DOC_KEY = '1COM58UHpaHuf_j-xgx1c8JwMrLLzc3Len3SQjUBluUM'
 COPY_PATH = 'data/copy.xlsx'
 
 """
 DATA
 """
-DATA_GOOGLE_DOC_KEY = '0AvlX2ijdYanwdGVlbS1adk5mbmdTNDR2MVA3RS1HMXc'
+DATA_GOOGLE_DOC_KEY = '1xTj5R4_awhGvIkoFHKz7gBOLL_K7CpRaBb-1wksVz_o'
 
 LINK_CATEGORY_MAP = {
     'Author Interviews': 'Interview',
@@ -138,6 +140,25 @@ GOOGLE_ANALYTICS = {
 
 DISQUS_API_KEY = 'tIbSzEhGBE9NIptbnQWn4wy1gZ546CsQ2IHHtxJiYAceyyPoAkDkVnQfCifmCaQW'
 DISQUS_UUID = '$NEW_DISQUS_UUID'
+
+"""
+OAUTH
+"""
+
+GOOGLE_OAUTH_CREDENTIALS_PATH = '~/.google_oauth_credentials'
+
+authomatic_config = {
+    'google': {
+        'id': 1,
+        'class_': oauth2.Google,
+        'consumer_key': os.environ.get('GOOGLE_OAUTH_CLIENT_ID'),
+        'consumer_secret': os.environ.get('GOOGLE_OAUTH_CONSUMER_SECRET'),
+        'scope': ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/userinfo.email'],
+        'offline': True,
+    },
+}
+
+authomatic = Authomatic(authomatic_config, os.environ.get('AUTHOMATIC_SALT'))
 
 """
 Utilities
@@ -183,26 +204,26 @@ def configure_targets(deployment_target):
 
     if deployment_target == 'production':
         S3_BUCKET = PRODUCTION_S3_BUCKET
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_BASE_URL = 'https://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         SERVERS = PRODUCTION_SERVERS
-        SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
+        SERVER_BASE_URL = 'https://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         SERVER_LOG_PATH = '/var/log/%s' % PROJECT_FILENAME
         DISQUS_SHORTNAME = 'npr-news'
         DEBUG = False
     elif deployment_target == 'staging':
         S3_BUCKET = STAGING_S3_BUCKET
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_BASE_URL = 'https://s3.amazonaws.com/%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         SERVERS = STAGING_SERVERS
-        SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
+        SERVER_BASE_URL = 'https://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         SERVER_LOG_PATH = '/var/log/%s' % PROJECT_FILENAME
         DISQUS_SHORTNAME = 'nprviz-test'
         DEBUG = False
     else:
         S3_BUCKET = None
         S3_BASE_URL = 'http://127.0.0.1:8000'
-        S3_DEPLOY_URL = None 
+        S3_DEPLOY_URL = None
         SERVERS = []
         SERVER_BASE_URL = 'http://127.0.0.1:8001/%s' % PROJECT_SLUG
         SERVER_LOG_PATH = '/tmp'

@@ -63,9 +63,9 @@ class GoogleDoc(object):
             data['scope'] = self.scope
             data['service'] = self.service
             data['session'] = self.session
-
+            print data
             r = requests.post("https://www.google.com/accounts/ClientLogin", data=data)
-
+            print r.content
             self.auth = r.content.split('\n')[2].split('Auth=')[1]
 
     def get_document(self):
