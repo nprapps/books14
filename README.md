@@ -84,6 +84,7 @@ cd books14
 mkvirtualenv --no-site-packages books14
 pip install -r requirements.txt
 npm install
+fab assets.sync
 fab update
 ```
 
@@ -152,7 +153,7 @@ The app template is outfitted with a few ``fab`` utility functions that make pul
 To update the latest document, simply run:
 
 ```
-fab copytext.update 
+fab copytext.update
 ```
 
 Note: ``copytext.update`` runs automatically whenever ``fab render`` is called.

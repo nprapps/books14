@@ -38,6 +38,11 @@ FACEBOOK_APP_ID = '138837436154588'
 """
 DEPLOYMENT
 """
+PRODUCTION_S3_BUCKET_BASE = 'apps.npr.org'
+
+STAGING_S3_BUCKET_BASE = 'stage-apps.npr.org'
+
+
 PRODUCTION_S3_BUCKET = {
     'bucket_name': 'apps.npr.org',
     'region': 'us-east-1'
@@ -204,6 +209,7 @@ def configure_targets(deployment_target):
 
     if deployment_target == 'production':
         S3_BUCKET = PRODUCTION_S3_BUCKET
+        S3_BUCKET_BASE = PRODUCTION_S3_BUCKET_BASE
         S3_BASE_URL = 'https://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         SERVERS = PRODUCTION_SERVERS
@@ -213,6 +219,7 @@ def configure_targets(deployment_target):
         DEBUG = False
     elif deployment_target == 'staging':
         S3_BUCKET = STAGING_S3_BUCKET
+        S3_BUCKET_BASE = STAGING_S3_BUCKET_BASE
         S3_BASE_URL = 'https://s3.amazonaws.com/%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
         SERVERS = STAGING_SERVERS
@@ -238,4 +245,3 @@ Run automated configuration
 DEPLOYMENT_TARGET = os.environ.get('DEPLOYMENT_TARGET', None)
 
 configure_targets(DEPLOYMENT_TARGET)
-
